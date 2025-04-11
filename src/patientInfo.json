@@ -62,14 +62,30 @@
       "name": "L-thyroxine Henning",
       "amount": "112mcg",
       "frequency": "Daily",
-      "intakeTime": "Morning"
+      "intakeTime": "Morning",
+      "url": "https://mein.sanofi.de/produkte/l-thyroxin-henning"
     },
     {
       "name": "Chlormanidon",
       "amount": "2mg",
       "frequency": "Daily",
-      "intakeTime": "Afternoon"
-    }
+      "intakeTime": "Afternoon",
+      "url": "https://www.shop-apotheke.com/arzneimittel/5700618/chlormadinon-2-mg-fem-jenapharm.htm"
+    },
+     {
+       "name": "Azela Vision Sine",
+       "amount": "1 drop in each eye",
+       "frequency": "1-2 a day in pollen season",
+       "intakeTime": "When needed",
+       "url": "https://www.omnivision.de/produkt/azela-vision-sine/"
+     },
+      {
+        "name": "Mometason",
+        "amount": "1 spray in every nostril",
+        "frequency": "1 day in pollen season",
+        "intakeTime": "When needed",
+        "url": "https://www.docmorris.de/mometason-adgc-50ugsp-140-nasenspray/"
+      }
   ],
 
   "currentSupplements": [
@@ -89,7 +105,7 @@
     },
     {
       "name": "Vitamin B-Complex",
-      "amount": "As directed",
+      "amount": "1 pill",
       "frequency": "Daily",
       "intakeTime": "Afternoon",
       "link": "https://amzn.eu/d/4tLB2Q0"
@@ -110,21 +126,21 @@
     },
     {
       "name": "Silizium",
-      "amount": "As directed",
+      "amount": "1 capsule",
       "frequency": "Daily",
       "intakeTime": "Evening",
       "link": "https://amzn.eu/d/6qvs6Tj"
     },
     {
       "name": "Magnesium Complex",
-      "amount": "As directed",
+      "amount": "1 capsule",
       "frequency": "Daily",
       "intakeTime": "Evening",
       "link": "https://amzn.eu/d/1v2TQuJ"
     },
     {
       "name": "Theanine",
-      "amount": "500mg",
+      "amount": "1 capsule",
       "frequency": "Daily",
       "intakeTime": "Evening",
       "link": "https://amzn.eu/d/5cHG5LD"

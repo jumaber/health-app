@@ -12,219 +12,191 @@ export function Patient({ patientInfo }) {
     currentDoctors,
   } = patientInfo;
 
+  const Section = ({ title, children }) => (
+    <section className="bg-white p-6 rounded-2xl shadow-sm space-y-4">
+      <h2 className="text-xl font-bold text-blue-700 border-b pb-2">{title}</h2>
+      {children}
+    </section>
+  );
+
+  const Pill = ({ children }) => (
+    <div className="bg-blue-100 text-zinc-800 px-4 py-2 rounded-xl font-medium">
+      {children}
+    </div>
+  );
+
+  const Divider = () => <hr className="border-t border-zinc-200 my-4" />;
+
   return (
-    <div className="bg-zinc-100 h-full overflow-x-hidden px-3 pb-20 pt-10 md:px-6 md:pt-10 md:pb-3 lg:p-18 lg:ml-72">
-      <h1 className="mb-10">Patient Info</h1>
-      <div className="flex flex-col gap-10 w-full max-w-full">
-        {/* User Information */}
-        <div className="patient-wrap">
-          <h2 className="info-header">About Me</h2>
-          <div className="info-box">
-            <div className="flex flex-col gap-6 min-w-sm">
-              <p className="info-pill-link">
-                Name <span className="font-bold">{userInformation.name}</span>
-              </p>
-              <p className="info-pill-link">
-                Last Name{" "}
-                <span className="font-bold">{userInformation.lastName}</span>
-              </p>
-              <p className="info-pill-link">
-                Birth Date{" "}
-                <span className="font-bold">{userInformation.birthDate}</span>
-              </p>
-              <p className="info-pill-link">
-                Gender{" "}
-                <span className="font-bold">{userInformation.gender}</span>
-              </p>
-              <p className="info-pill-link">
-                Blood Type{" "}
-                <span className="font-bold">{userInformation.bloodType}</span>
-              </p>
-            </div>
-            <div className="flex flex-col gap-6 min-w-sm">
-              <p className="info-pill-link">
-                Children{" "}
-                <span className="font-bold">{userInformation.children}</span>
-              </p>
-              <p className="info-pill-link">
-                Status{" "}
-                <span className="font-bold">{userInformation.status}</span>
-              </p>
-              <p className="info-pill-link">
-                Originally from{" "}
-                <span className="font-bold">
-                  {userInformation.countryOfOrigin}
-                </span>
-              </p>
-              <p className="info-pill-link">
-                Residing in{" "}
-                <span className="font-bold">
-                  {userInformation.countryOfResidence}
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
+    <div className="bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6 lg:ml-72 space-y-8">
+      <h1 className="text-3xl font-bold text-zinc-800 mb-6">
+        Patient Overview
+      </h1>
 
-        {/* Diagnosis */}
-        <div className="patient-wrap">
-          <div className="info-header">Current Diagnosis</div>
-          <div className="info-box-col">
-            {currentDiagnosis.map((item, i) => (
-              <div key={i} className="info-pill-large">
-                <p className="flex font-bold text-xl">{item.condition}</p>
-                <p>
-                  <span className="font-bold">Diagnosis Year: </span>
-                  {item.diagnosisYear}
-                </p>
-                <p>
-                  <span className="font-bold">Notes: </span>
-                  {item.notes}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Section title="About Me">
+          <ul className="divide-y divide-zinc-200">
+            <li className="py-2">
+              <strong>Name:</strong> {userInformation.name}
+            </li>
+            <li className="py-2">
+              <strong>Last Name:</strong> {userInformation.lastName}
+            </li>
+            <li className="py-2">
+              <strong>Birth Date:</strong> {userInformation.birthDate}
+            </li>
+            <li className="py-2">
+              <strong>Gender:</strong> {userInformation.gender}
+            </li>
+            <li className="py-2">
+              <strong>Blood Type:</strong> {userInformation.bloodType}
+            </li>
+            <li className="py-2">
+              <strong>Children:</strong> {userInformation.children}
+            </li>
+            <li className="py-2">
+              <strong>Status:</strong> {userInformation.status}
+            </li>
+            <li className="py-2">
+              <strong>Origin:</strong> {userInformation.countryOfOrigin}
+            </li>
+            <li className="py-2">
+              <strong>Residence:</strong> {userInformation.countryOfResidence}
+            </li>
+          </ul>
+        </Section>
 
-        {/* Allergies */}
-        <div className="patient-wrap">
-          <h2 className="info-header">Allergies</h2>
-          <div className="info-box">
+        <Section title="Current Diagnosis">
+          {currentDiagnosis.map((item, i) => (
+            <div key={i} className="space-y-1">
+              <p className="text-lg font-semibold">{item.condition}</p>
+              <p>
+                <strong>Year:</strong> {item.diagnosisYear}
+              </p>
+              <p>
+                <strong>Notes:</strong> {item.notes}
+              </p>
+              {i !== currentDiagnosis.length - 1 && <Divider />}
+            </div>
+          ))}
+        </Section>
+
+        <Section title="Allergies">
+          <div className="flex flex-wrap gap-3">
             {allergies.map((item, i) => (
-              <div key={i} className="info-pill">
-                <p>
-                  <span className="font-bold">{item.name}</span> -{" "}
-                  {item.severity}
-                </p>
-              </div>
+              <Pill key={i}>
+                {item.name} – {item.severity}
+              </Pill>
             ))}
           </div>
-        </div>
+        </Section>
 
-        {/* Medication */}
-        <div className="patient-wrap">
-          <h2 className="info-header">Medication</h2>
-          <div className="info-box">
-            {currentMedication.map((med, i) => (
-              <div key={i} className="info-pill-link">
-                <div>
-                  <span className="font-bold">{med.name}</span> – {med.amount} (
-                  {med.frequency}, {med.intakeTime})
-                </div>
-                <div>
-                  <Link
-                    to={med.link}
-                    className="info-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${med.name}`}
-                  >
-                    <img
-                      src="/src/assets/external-link.svg"
-                      alt={`External link to ${med.name}`}
-                    />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Supplements */}
-        <div className="patient-wrap">
-          <h2 className="info-header">Supplements</h2>
-          <div className="info-box">
-            {currentSupplements.map((supp, i) => (
-              <div key={i} className="info-pill-link">
-                <div className="flex flex-col">
-                  <span className="font-bold">{supp.name}</span>
-                  <p>
-                    {supp.amount} ({supp.frequency}, {supp.intakeTime})
-                  </p>
-                </div>
-                <div>
-                  <Link
-                    to={supp.link}
-                    className="info-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${supp.name}`}
-                  >
-                    <img
-                      src="/src/assets/external-link.svg"
-                      alt={`External link to ${supp.name}`}
-                    />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Treatments */}
-        <div className="patient-wrap">
-          <div className="info-header">Current Treatments</div>
-          <div className="info-box">
-            {currentTreatments.map((item, i) => (
-              <div key={i} className="info-pill-large">
-                <p className="flex font-bold text-xl">{item.name}</p>
+        <Section title="Medication">
+          {currentMedication.map((med, i) => (
+            <div
+              key={i}
+              className={`flex justify-between items-center py-2 ${
+                i !== currentMedication.length - 1
+                  ? "border-b border-zinc-200"
+                  : ""
+              }`}
+            >
+              <div>
                 <p>
-                  <span className="font-bold">Frequency: </span>
-                  {item.frequency}
-                </p>
-                <p>
-                  <span className="font-bold">Started on: </span>
-                  {item.treatmentBegin}
-                </p>
-                <p>
-                  <span className="font-bold">Treatement Length: </span>
-                  {item.treatmentLength}
+                  <strong>{med.name}</strong> – {med.amount} ({med.frequency},{" "}
+                  {med.intakeTime})
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
+              <Link to={med.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/src/assets/external-link.svg"
+                  alt={med.name}
+                  className="w-5 h-5"
+                />
+              </Link>
+            </div>
+          ))}
+        </Section>
 
-        {/* Diet */}
-        <div className="patient-wrap">
-          <div className="info-header">Diet Adjustments</div>
-          <div className="info-box">
+        <Section title="Supplements">
+          {currentSupplements.map((supp, i) => (
+            <div
+              key={i}
+              className={`flex justify-between items-center py-2 ${
+                i !== currentSupplements.length - 1
+                  ? "border-b border-zinc-200"
+                  : ""
+              }`}
+            >
+              <div>
+                <p>
+                  <strong>{supp.name}</strong>
+                </p>
+                <p>
+                  {supp.amount} ({supp.frequency}, {supp.intakeTime})
+                </p>
+              </div>
+              <Link to={supp.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/src/assets/external-link.svg"
+                  alt={supp.name}
+                  className="w-5 h-5"
+                />
+              </Link>
+            </div>
+          ))}
+        </Section>
+
+        <Section title="Current Treatments">
+          {currentTreatments.map((item, i) => (
+            <div key={i} className="space-y-1">
+              <p className="text-lg font-semibold">{item.name}</p>
+              <p>
+                <strong>Frequency:</strong> {item.frequency}
+              </p>
+              <p>
+                <strong>Started on:</strong> {item.treatmentBegin}
+              </p>
+              <p>
+                <strong>Length:</strong> {item.treatmentLength}
+              </p>
+              {i !== currentTreatments.length - 1 && <Divider />}
+            </div>
+          ))}
+        </Section>
+
+        <Section title="Diet Adjustments">
+          <div className="flex flex-wrap gap-3">
             {currentDietAdjustments.map((diet, i) => (
-              <div key={i} className="info-pill font-bold">
-                {diet}
-              </div>
+              <Pill key={i}>{diet}</Pill>
             ))}
           </div>
-        </div>
+        </Section>
 
-        {/* Doctors */}
-        <div className="patient-wrap">
-          <div className="info-header">Current Doctors</div>
-          <div className="info-box">
-            {currentDoctors.map((doc, i) => (
-              <div key={i} className="info-pill-link">
-                <div className="flex flex-col">
-                  <p className="font-bold">{doc.name}</p>
-                  <p>{doc.specialty}</p>
-                </div>
-                <div>
-                  <Link
-                    to={doc.link}
-                    className="info-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${doc.name}`}
-                  >
-                    <img
-                      src="/src/assets/external-link.svg"
-                      alt={`External link to ${doc.name}`}
-                    />
-                  </Link>
-                </div>
+        <Section title="Current Doctors">
+          {currentDoctors.map((doc, i) => (
+            <div
+              key={i}
+              className={`flex justify-between items-center py-2 ${
+                i !== currentDoctors.length - 1
+                  ? "border-b border-zinc-200"
+                  : ""
+              }`}
+            >
+              <div>
+                <p className="font-semibold">{doc.name}</p>
+                <p>{doc.specialty}</p>
               </div>
-            ))}
-          </div>
-        </div>
+              <Link to={doc.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/src/assets/external-link.svg"
+                  alt={doc.name}
+                  className="w-5 h-5"
+                />
+              </Link>
+            </div>
+          ))}
+        </Section>
       </div>
     </div>
   );

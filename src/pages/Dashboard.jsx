@@ -1,8 +1,8 @@
 export function Dashboard() {
   return (
-    <div className="bg-zinc-100 min-h-screen px-6 py-10 md:px-8 lg:ml-72 space-y-10">
+    <div className="bg-zinc-100 min-h-screen p-10 md:px-8 lg:ml-72">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-6 lg:p-10">
         <div>
           <h1 className="text-3xl font-bold text-zinc-800">Hi, I'm Júlia 👋</h1>
           <p className="text-lg text-zinc-600 mt-1 max-w-4xl">
@@ -12,17 +12,10 @@ export function Dashboard() {
             any support or guidance along the way.
           </p>
         </div>
-        <a
-          href="mailto:jumaber@gmail.com"
-          target="_blank"
-          className="symptom-button mt-4 md:mt-0"
-        >
-          jumaber@gmail.com
-        </a>
       </div>
-      <div className="lg:pr-70">
+      <div className="lg:mr-70 lg:px-10 py-6">
         {/* Timeline */}
-        <div className="relative border-l-2 border-blue-200 pl-6 space-y-10">
+        <div className="relative border-l-2 border-blue-200 pl-6 space-y-10 ">
           <div className="absolute top-0 left-[-10px] w-4 h-4 bg-blue-500 rounded-full" />
 
           <div>
@@ -171,7 +164,7 @@ export function Dashboard() {
         </div>
 
         {/* Closing */}
-        <div className="text-center text-lg text-zinc-600 italic">
+        <div className="text-center text-lg text-zinc-600 italic mt-10">
           Thank you for being here and taking care of me ❤️
         </div>
       </div>

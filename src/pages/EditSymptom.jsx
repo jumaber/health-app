@@ -1,7 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-export function AddSymptom({ symptoms, setSymptoms }) {
+export function EditSymptom({ symptoms, setSymptoms }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const existingSymptom = symptoms.find((s) => s._id === id);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
@@ -12,12 +17,24 @@ export function AddSymptom({ symptoms, setSymptoms }) {
   const [hasMedication, setHasMedication] = useState(false);
   const [medication, setMedication] = useState("");
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (existingSymptom) {
+      setTitle(existingSymptom.title);
+      setDescription(existingSymptom.description);
+      setType(existingSymptom.type);
+      setIntensity(existingSymptom.intensity);
+      setStressLevel(existingSymptom.stressLevel);
+      setMedication(existingSymptom.medication || "");
+      setHasMedication(!!existingSymptom.medication);
+      setDay(existingSymptom.date?.day || "");
+      setTimeOfDay(existingSymptom.date?.timeOfDay || []);
+    }
+  }, [existingSymptom]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newSymptom = {
+    const updatedSymptom = {
       title,
       description,
       type,
@@ -30,32 +47,25 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       },
     };
 
+    console.log("Updating symptom:", updatedSymptom);
 
-    fetch("http://localhost:5050/api/symptoms", {
-      method: "POST",
+
+    fetch(`http://localhost:5050/api/symptoms/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newSymptom),
+      body: JSON.stringify(updatedSymptom),
     })
       .then((res) => res.json())
       .then((data) => {
-        setSymptoms([...symptoms, data]);
+        const updatedList = symptoms.map((s) => (s._id === id ? data : s));
+        setSymptoms(updatedList);
         navigate("/symptoms");
       })
       .catch((error) => {
-        console.error("Error adding symptom:", error);
+        console.error("Error updating symptom:", error);
       });
-
-    setTitle("");
-    setDescription("");
-    setType("");
-    setIntensity("");
-    setDay("");
-    setTimeOfDay([]);
-    setStressLevel("");
-    setHasMedication(false);
-    setMedication("");
   };
 
   const pillOptions = (state, setState, options) => (
@@ -76,21 +86,25 @@ export function AddSymptom({ symptoms, setSymptoms }) {
   );
 
   const toggleTimeOfDay = (option) => {
-    setTimeOfDay(
-      (prev) =>
-        prev.includes(option)
-          ? prev.filter((t) => t !== option) // remove if already selected
-          : [...prev, option] // add if not selected
+    setTimeOfDay((prev) =>
+      prev.includes(option)
+        ? prev.filter((t) => t !== option)
+        : [...prev, option]
     );
   };
 
+  if (!existingSymptom) {
+    return (
+      <div className="p-10 text-xl text-red-600 font-semibold">
+        Symptom not found.
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6 lg:pl-82">
       <div className="bg-white w-full shadow-md rounded-xl p-6 max-w-2xl mx-auto space-y-6">
-        <h1 className="text-2xl font-bold text-zinc-800 lmb-4">
-          Add a New Symptom
-        </h1>
+        <h1 className="text-2xl font-bold text-zinc-800 mb-4">Edit Symptom</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
           <div>
@@ -189,7 +203,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
 
           <div className="pt-4">
             <button type="submit" className="symptom-button">
-              + Add New Symptom
+              Update Symptom
             </button>
           </div>
         </form>
