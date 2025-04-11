@@ -1,0 +1,123 @@
+[
+    {
+        "id": 1,
+        "title": "Increased Eye Floaters",
+        "description": "Noticed a lot more grey floaters, especially in bright light. Interferes with reading or screen work sometimes.",
+        "type": "Symptom",
+        "intensity": "Medium",
+        "date": {
+            "day": "04/02/2025",
+            "timeOfDay": "Afternoon"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Fatigue",
+        "description": "Feeling unusually tired despite sleeping enough. Noticed a lack of motivation and slow mental processing.",
+        "type": "Symptom",
+        "intensity": "High",
+        "date": {
+            "day": "11/02/2025",
+            "timeOfDay": "Morning"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Gluten consumption",
+        "description": "Ate pizza with wheat flour. Felt bloated and brain foggy a few hours later.",
+        "type": "Food",
+        "intensity": "Low",
+        "date": {
+            "day": "06/03/2025",
+            "timeOfDay": "Evening"
+        }
+    },
+    {
+        "id": 4,
+        "title": "Hashimoto's flare-up?",
+        "description": "Symptoms include brain fog, irritability, dry skin, and mild depression. Not sure if it's a flare-up or just hormonal.",
+        "type": "Period",
+        "intensity": "Medium",
+        "date": {
+            "day": "03/04/2025",
+            "timeOfDay": "Morning"
+        }
+    },
+    {
+        "id": 5,
+        "title": "Diarrhea after meal",
+        "description": "Had a loose bowel movement after eating at a restaurant. Suspect oil or dairy could be a trigger.",
+        "type": "Symptom",
+        "intensity": "High",
+        "date": {
+            "day": "17/03/2025",
+            "timeOfDay": "Evening"
+        }
+    },
+    {
+        "id": 6,
+        "title": "Skin allergy - Itchy rash",
+        "description": "Red itchy patches appeared on forearms. Possibly related to detergent or new skincare product.",
+        "type": "Symptom",
+        "intensity": "Medium",
+        "date": {
+            "day": "22/03/2025",
+            "timeOfDay": "Afternoon"
+        }
+    },
+    {
+        "id": 7,
+        "title": "Dry skin",
+        "description": "Skin feels flaky and dry, especially around nose and cheeks. Started applying moisturizer more frequently.",
+        "type": "Symptom",
+        "intensity": "Low",
+        "date": {
+            "day": "26/03/2025",
+            "timeOfDay": "Morning"
+        }
+    },
+    {
+        "id": 8,
+        "title": "Brain fog",
+        "description": "Difficulty concentrating, memory lapses, especially in the mornings. Feels like mind is cloudy.",
+        "type": "Symptom",
+        "intensity": "Medium",
+        "date": {
+            "day": "28/03/2025",
+            "timeOfDay": "Morning"
+        }
+    },
+    {
+        "id": 9,
+        "title": "Hospital visit for eye symptoms",
+        "description": "Went to the hospital due to concern about increase in eye floaters and brief flashes of light. Doctor didn’t find anything urgent but recommended further follow-up.",
+        "type": "Symptom",
+        "intensity": "High",
+        "date": {
+            "day": "05/02/2025",
+            "timeOfDay": "Evening"
+        }
+    },
+    {
+        "id": 10,
+        "title": "Exhaustion after workout",
+        "description": "Felt extremely tired after a light workout. Needed to sleep for over an hour immediately after.",
+        "type": "Symptom",
+        "intensity": "High",
+        "date": {
+            "day": "15/03/2025",
+            "timeOfDay": "Afternoon"
+        }
+    },
+    {
+        "id": 11,
+        "title": "Extreme tiredness after alcohol",
+        "description": "Drank two glasses of alcohol on a night out. Felt wiped out for two days afterward. Brain fog and low energy.",
+        "type": "Symptom",
+        "intensity": "High",
+        "date": {
+            "day": "30/03/2025",
+            "timeOfDay": "Night"
+        }
+    }
+]

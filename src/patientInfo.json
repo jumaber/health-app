@@ -1,0 +1,174 @@
+{
+  "userInformation": {
+    "name": "Júlia",
+    "lastName": "Marí Bernaus",
+    "birthDate": "30-01-1985",
+    "gender": "Female",
+    "bloodType": "O+",
+    "children": "Two - 2015, 2018",
+    "status": "Married",
+    "countryOfOrigin": "Barcelona, Spain",
+    "countryOfResidence" : "since 2008 Berlin, Germany"
+  },
+
+  "currentDiagnosis": [
+    {
+      "condition": "Hypermenohrroe",
+      "diagnosisYear": "1999",
+      "notes": "400-700 ml every 3 weeks."
+    },
+    {
+      "condition": "Migraine",
+      "diagnosisYear": "1999",
+      "notes": "Appears at the beginning of the period, at the end of the period, sometimes during ovulation and a day after heavy exercise."
+    },
+
+    {
+      "condition": "Hashimoto's thyroiditis",
+      "diagnosisYear": "2018 (possibly since 2015)",
+      "notes": "Periods of extreme fatigue, food intolerances, general inflammation."
+    },
+
+    {
+      "condition": "Possible acquired mild Factor XIII Deficiency",
+      "diagnosisYear": "2022",
+      "notes": "Heavy menstrual bleeding, more than usual bleeding (over 500ml) for every natural birth, mentioned after operations."
+    },
+      {
+      "condition": "Rosacea",
+      "diagnosisYear": "2005",
+      "notes": "Got increasingly worse with years until in 2022 I did a 9-month Soolantra treatement and it improved."
+    }
+  ],
+
+  "allergies": [
+    {
+      "name": "Birch Pollen",
+      "severity": "Medium-High"
+      
+    },
+    {
+      "name": "Birch Pollen: Cross-Reaction with Rosaceae Family Foods",
+      "severity": "Very High"
+    },
+    {
+      "name": "Dust Mites",
+      "severity": "Medium"
+    }
+  ],
+
+  "currentMedication": [
+    {
+      "name": "L-thyroxine Henning",
+      "amount": "112mcg",
+      "frequency": "Daily",
+      "intakeTime": "Morning"
+    },
+    {
+      "name": "Chlormanidon",
+      "amount": "2mg",
+      "frequency": "Daily",
+      "intakeTime": "Afternoon"
+    }
+  ],
+
+  "currentSupplements": [
+    {
+      "name": "Probiotics",
+      "amount": "2 pills",
+      "frequency": "Daily",
+      "intakeTime": "Morning",
+      "link": "https://amzn.eu/d/8JVvbis"
+    },
+    {
+      "name": "Vitamin D3",
+      "amount": "40000 IU",
+      "frequency": "Every 3–4 weeks",
+      "intakeTime": "Morning",
+      "link": "https://amzn.eu/d/9b24M27"
+    },
+    {
+      "name": "Vitamin B-Complex",
+      "amount": "As directed",
+      "frequency": "Daily",
+      "intakeTime": "Afternoon",
+      "link": "https://amzn.eu/d/4tLB2Q0"
+    },
+    {
+      "name": "Thyroid Support",
+      "amount": "Kelp & Thyme Extracts",
+      "frequency": "Daily",
+      "intakeTime": "Afternoon",
+      "link": "https://amzn.eu/d/is2UZP2"
+    },
+    {
+      "name": "Slippery Elm",
+      "amount": "2 capsules",
+      "frequency": "Daily",
+      "intakeTime": "Evening",
+      "link": "https://amzn.eu/d/cpoxU33"
+    },
+    {
+      "name": "Silizium",
+      "amount": "As directed",
+      "frequency": "Daily",
+      "intakeTime": "Evening",
+      "link": "https://amzn.eu/d/6qvs6Tj"
+    },
+    {
+      "name": "Magnesium Complex",
+      "amount": "As directed",
+      "frequency": "Daily",
+      "intakeTime": "Evening",
+      "link": "https://amzn.eu/d/1v2TQuJ"
+    },
+    {
+      "name": "Theanine",
+      "amount": "500mg",
+      "frequency": "Daily",
+      "intakeTime": "Evening",
+      "link": "https://amzn.eu/d/5cHG5LD"
+    }
+  ],
+
+  "currentTreatments": [
+    {
+      "name": "Mirena IUD",
+      "frequency": "Daily",
+      "treatmentBegin": "May 2025",
+      "treatmentLength": "5 years"
+    },
+    {
+      "name": "Birch Pollen Allergy Desensitization",
+      "frequency": "Daily",
+      "treatmentBegin": "June 2025",
+      "treatmentLength": "3 years"
+    }
+  ],
+
+  "currentDietAdjustments": [
+    "Reduced sugar intake",
+    "Reduced dairy intake",
+    "Reduced gluten intake"
+  ],
+
+  "currentPhysicalActivity": ["Light yoga and stretching", "Bike Riding"],
+
+  "currentDoctors": [
+    {
+      "name": "Dr. Aliona Cuadrado",
+      "specialty": "General Practitioner",
+      "link": "https://praxis-weichselstr.de/"
+    },
+    {
+      "name": "Dr. Bettina Schein",
+      "specialty": "Gynecologist",
+      "link": "https://fzz-berlin.de/"
+    },
+    {
+      "name": "Dr. Peter Velling",
+      "specialty": "Allergologist",
+      "link": "https://mvz-dob.de/"
+    }
+  ]
+}

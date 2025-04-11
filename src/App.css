@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  margin: 0;
+}
+
+.symptom-button{
+  @apply px-4 py-2 bg-blue-600 text-white font-bold rounded-lg max-h-max max-w-max 
+}
+
+
+.info-box {
+  @apply flex flex-row flex-wrap gap-8 my-6 p-8 bg-white rounded-lg w-max lg:w-full;
+}
+
+.info-box-col{
+  @apply flex flex-col flex-wrap gap-8 my-6 p-8 bg-white rounded-lg w-max lg:w-full;
+}
+
+.info-pill {
+  @apply flex flex-col bg-blue-100 gap-2 px-4 py-2 rounded-xl
+}
+
+.info-pill-large {
+  @apply flex flex-col bg-blue-100 gap-2 p-6 rounded-xl
+
+}
+
+.info-pill-link {
+  @apply flex flex-row justify-between bg-blue-100 gap-2 px-4 py-2 rounded-xl
+}
+
+.nav-item{
+  @apply flex justify-center bg-blue-600 text-white font-bold py-4 px-4 rounded-lg mb-4
+}
+
+.info-header{
+  @apply max-w-max text-2xl font-bold
+}
+
+.patient-wrap{
+  @apply flex flex-col max-w-max
+}
