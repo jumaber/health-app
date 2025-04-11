@@ -5,10 +5,11 @@ const symptomSchema = new mongoose.Schema({
   description: String,
   date: {
     day: String,
-    timeOfDay: String,
+    timeOfDay: [String],
   },
   intensity: String,
   type: String,
+  medication: String,
 });
 
 const Symptom = mongoose.model("Symptom", symptomSchema);

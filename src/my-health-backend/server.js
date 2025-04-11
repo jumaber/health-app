@@ -37,6 +37,8 @@ app.get("/api/symptoms", async (req, res) => {
 
 // POST a new symptom
 app.post("/api/symptoms", async (req, res) => {
+  console.log("Incoming symptom:", req.body); // ✅ Add this
+
   const newSymptom = new Symptom(req.body);
 
   try {
@@ -46,6 +48,7 @@ app.post("/api/symptoms", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
 
 
 // PUT (update) an existing symptom
@@ -67,6 +70,23 @@ app.put("/api/symptoms/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to update symptom" });
   }
 });
+
+// DELETE a symptom by ID
+app.delete("/api/symptoms/:id", async (req, res) => {
+  try {
+    const deletedSymptom = await Symptom.findByIdAndDelete(req.params.id);
+
+    if (!deletedSymptom) {
+      return res.status(404).json({ message: "Symptom not found" });
+    }
+
+    res.status(200).json({ message: "Symptom deleted successfully" });
+  } catch (err) {
+    console.error("Delete failed:", err);
+    res.status(500).json({ message: "Failed to delete symptom" });
+  }
+});
+
 
 // Start server
 const PORT = process.env.PORT || 5000;

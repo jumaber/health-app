@@ -23,6 +23,12 @@ function App() {
       .catch((err) => console.error("Error fetching symptoms:", err));
   }, []);
 
+  const fetchSymptoms = async () => {
+    const res = await fetch("http://localhost:5050/api/symptoms");
+    const data = await res.json();
+    setSymptoms(data);
+  };
+
   return (
     <>
       <Sidebar />
@@ -35,7 +41,13 @@ function App() {
         />
         <Route
           path="/symptoms"
-          element={<SymptomsList symptoms={symptoms} />}
+          element={
+            <SymptomsList
+              symptoms={symptoms}
+              setSymptoms={setSymptoms}
+              fetchSymptoms={fetchSymptoms}
+            />
+          }
         />
 
         <Route

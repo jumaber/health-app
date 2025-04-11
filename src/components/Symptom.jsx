@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Pencil, Trash2 } from "lucide-react"; // optional icon package
 
-export default function Symptom({ symptoms, setSymptoms }) {
+export default function Symptom({ symptoms, fetchSymptoms }) {
   const navigate = useNavigate();
 
   const getTypeClass = (type) => {
@@ -40,19 +40,18 @@ export default function Symptom({ symptoms, setSymptoms }) {
     return `${day}/${month}/${year}`;
   };
 
-  const handleDelete = (id) => {
-    fetch(`http://localhost:5050/api/symptoms/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (res.ok) {
-          const updated = symptoms.filter((s) => s._id !== id);
-          setSymptoms(updated);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to delete symptom:", err);
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:5050/api/symptoms/${id}`, {
+        method: "DELETE",
       });
+
+      if (res.ok) {
+        fetchSymptoms(); // 🔁 Refresh data from backend
+      }
+    } catch (err) {
+      console.error("Failed to delete:", err);
+    }
   };
 
   const handleEdit = (id) => {
@@ -75,70 +74,74 @@ export default function Symptom({ symptoms, setSymptoms }) {
       </div>
 
       {/* Data Rows */}
-      {symptoms.map((symptom) => (
-        <div
-          key={symptom._id}
-          className="flex flex-col lg:flex-row gap-4 px-4 py-6 bg-blue-50 hover:bg-blue-100 transition rounded-xl w-full border border-blue-200"
-        >
-          <div className="w-24">
-            <span className={getTypeClass(symptom.type)}>{symptom.type}</span>
-          </div>
+      {symptoms.map((symptom) => {
+        console.log("Symptom:", symptom); // 🔍 Check if medication field is coming through
 
-          <div className="flex-1 font-bold">{symptom.title}</div>
+        return (
+          <div
+            key={symptom._id}
+            className="flex flex-col lg:flex-row gap-4 px-4 py-6 bg-blue-50 hover:bg-blue-100 transition rounded-xl w-full border border-blue-200"
+          >
+            <div className="w-24">
+              <span className={getTypeClass(symptom.type)}>{symptom.type}</span>
+            </div>
 
-          <div className="flex-[2] text-zinc-700">{symptom.description}</div>
+            <div className="flex-1 font-bold">{symptom.title}</div>
 
-          <div className="w-28">
-            <span className={getIntensityClass(symptom.intensity)}>
-              {symptom.intensity}
-            </span>
-          </div>
+            <div className="flex-[2] text-zinc-700">{symptom.description}</div>
 
-          <div className="w-28">
-            <span className={getIntensityClass(symptom.stressLevel)}>
-              {symptom.stressLevel}
-            </span>
-          </div>
-
-          <div className="w-24">
-            <span className={getDateClass()}>
-              {formatDate(symptom.date?.day)}
-            </span>
-          </div>
-
-          <div className="w-32 flex flex-wrap gap-1">
-            {(Array.isArray(symptom.date?.timeOfDay)
-              ? symptom.date.timeOfDay
-              : [symptom.date?.timeOfDay]
-            ).map((time, idx) => (
-              <span key={idx} className={getTimeClass()}>
-                {time}
+            <div className="w-28">
+              <span className={getIntensityClass(symptom.intensity)}>
+                {symptom.intensity}
               </span>
-            ))}
-          </div>
+            </div>
 
-          <div className="flex-1 italic text-sm text-zinc-700">
-            {symptom.medication || <span className="text-zinc-400">—</span>}
-          </div>
+            <div className="w-28">
+              <span className={getIntensityClass(symptom.stressLevel)}>
+                {symptom.stressLevel}
+              </span>
+            </div>
 
-          <div className="w-20 flex gap-2 items-center justify-end">
-            <button
-              onClick={() => handleEdit(symptom._id)}
-              className="p-2 rounded-full bg-yellow-100 hover:bg-yellow-200"
-              aria-label="Edit"
-            >
-              <Pencil size={16} />
-            </button>
-            <button
-              onClick={() => handleDelete(symptom._id)}
-              className="p-2 rounded-full bg-red-100 hover:bg-red-200"
-              aria-label="Delete"
-            >
-              <Trash2 size={16} />
-            </button>
+            <div className="w-24">
+              <span className={getDateClass()}>
+                {formatDate(symptom.date?.day)}
+              </span>
+            </div>
+
+            <div className="w-32 flex flex-wrap gap-1">
+              {(Array.isArray(symptom.date?.timeOfDay)
+                ? symptom.date.timeOfDay
+                : [symptom.date?.timeOfDay]
+              ).map((time, idx) => (
+                <span key={idx} className={getTimeClass()}>
+                  {time}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex-1 italic text-sm text-zinc-700">
+              {symptom.medication || <span className="text-zinc-400">—</span>}
+            </div>
+
+            <div className="flex gap-2 items-center justify-end">
+              <button
+                onClick={() => handleEdit(symptom._id)}
+                className="p-2 rounded-full bg-yellow-100 hover:bg-yellow-200"
+                aria-label="Edit"
+              >
+                <Pencil size={16} />
+              </button>
+              <button
+                onClick={() => handleDelete(symptom._id)}
+                className="p-2 rounded-full bg-red-100 hover:bg-red-200"
+                aria-label="Delete"
+              >
+                <Trash2 size={16} />
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

@@ -178,16 +178,30 @@ export function EditSymptom({ symptoms, setSymptoms }) {
           </div>
 
           <div>
-            <label className="form-label">Medication Taken?</label>
-            <div className="flex items-center gap-4">
-              <input
-                type="checkbox"
-                checked={hasMedication}
-                onChange={() => setHasMedication(!hasMedication)}
-              />
-              <span>{hasMedication ? "Yes" : "No"}</span>
+            {/* Label + Toggle + Yes/No in one row */}
+            <div className="flex items-center justify-between mb-2">
+              <label className="form-label">Medication Taken?</label>
+
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition ${
+                    hasMedication ? "bg-green-500" : "bg-gray-300"
+                  }`}
+                  onClick={() => setHasMedication(!hasMedication)}
+                >
+                  <div
+                    className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
+                      hasMedication ? "translate-x-6" : "translate-x-0"
+                    }`}
+                  ></div>
+                </div>
+                <span className="text-sm text-zinc-700">
+                  {hasMedication ? "Yes" : "No"}
+                </span>
+              </div>
             </div>
 
+            {/* Conditional input below */}
             {hasMedication && (
               <div className="mt-2">
                 <input

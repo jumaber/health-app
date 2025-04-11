@@ -9,7 +9,6 @@ export function AddSymptom({ symptoms, setSymptoms }) {
   const [day, setDay] = useState("");
   const [timeOfDay, setTimeOfDay] = useState([]);
   const [stressLevel, setStressLevel] = useState("");
-  const [hasMedication, setHasMedication] = useState(false);
   const [medication, setMedication] = useState("");
 
   const navigate = useNavigate();
@@ -23,13 +22,14 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       type,
       intensity,
       stressLevel,
-      medication: hasMedication ? medication : null,
+      medication,
       date: {
         day,
         timeOfDay,
       },
     };
 
+    console.log("Submitting new symptom:", newSymptom); // 👈 Add this here
 
     fetch("http://localhost:5050/api/symptoms", {
       method: "POST",
@@ -40,7 +40,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setSymptoms([...symptoms, data]);
+        setSymptoms([data, ...symptoms]);
         navigate("/symptoms");
       })
       .catch((error) => {
@@ -54,7 +54,6 @@ export function AddSymptom({ symptoms, setSymptoms }) {
     setDay("");
     setTimeOfDay([]);
     setStressLevel("");
-    setHasMedication(false);
     setMedication("");
   };
 
@@ -105,6 +104,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="form-input"
+              required
             />
           </div>
 
@@ -114,6 +114,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="form-textarea"
+              required
             />
           </div>
 
@@ -138,6 +139,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
               value={day}
               onChange={(e) => setDay(e.target.value)}
               className="form-input"
+              required
             />
           </div>
 
@@ -164,27 +166,14 @@ export function AddSymptom({ symptoms, setSymptoms }) {
           </div>
 
           <div>
-            <label className="form-label">Medication Taken?</label>
-            <div className="flex items-center gap-4">
-              <input
-                type="checkbox"
-                checked={hasMedication}
-                onChange={() => setHasMedication(!hasMedication)}
-              />
-              <span>{hasMedication ? "Yes" : "No"}</span>
-            </div>
-
-            {hasMedication && (
-              <div className="mt-2">
-                <input
-                  type="text"
-                  placeholder="Medication Name or Notes"
-                  value={medication}
-                  onChange={(e) => setMedication(e.target.value)}
-                  className="form-input"
-                />
-              </div>
-            )}
+            <label className="form-label">Medication</label>
+            <input
+              type="text"
+              placeholder="Medication Name or Notes"
+              value={medication}
+              onChange={(e) => setMedication(e.target.value)}
+              className="form-input"
+            />
           </div>
 
           <div className="pt-4">
