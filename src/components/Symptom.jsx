@@ -43,7 +43,7 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
   const handleDelete = async (id) => {
     try {
       const res = await fetch(
-        `https://julia-health-app.onrender.com/api/symptoms`,
+        `https://julia-health-app.onrender.com/api/symptoms/${id}`,
         {
           method: "DELETE",
         }
@@ -56,6 +56,7 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
       console.error("Failed to delete:", err);
     }
   };
+
 
   const handleEdit = (id) => {
     navigate(`/edit-symptom/${id}`);

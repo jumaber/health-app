@@ -22,14 +22,14 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       type,
       intensity,
       stressLevel,
-      medication,
+      medication: medication.trim(),
       date: {
         day,
         timeOfDay,
       },
     };
 
-    console.log("Submitting new symptom:", newSymptom); // 👈 Add this here
+    console.log("Submitting new symptom:", newSymptom);
 
     fetch("https://julia-health-app.onrender.com/api/symptoms", {
       method: "POST",
@@ -75,19 +75,19 @@ export function AddSymptom({ symptoms, setSymptoms }) {
   );
 
   const toggleTimeOfDay = (option) => {
-    setTimeOfDay(
-      (prev) =>
-        prev.includes(option)
-          ? prev.filter((t) => t !== option) // remove if already selected
-          : [...prev, option] // add if not selected
+    setTimeOfDay((prev) =>
+      prev.includes(option)
+        ? prev.filter((t) => t !== option)
+        : [...prev, option]
     );
   };
 
+  const isMedicationOn = medication !== "";
 
   return (
-    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6 lg:pl-82">
+    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6">
       <div className="bg-white w-full shadow-md rounded-xl p-6 max-w-2xl mx-auto space-y-6">
-        <h1 className="text-2xl font-bold text-zinc-800 lmb-4">
+        <h1 className="text-2xl font-bold text-zinc-800 mb-4">
           Add a New Symptom
         </h1>
 
@@ -166,14 +166,42 @@ export function AddSymptom({ symptoms, setSymptoms }) {
           </div>
 
           <div>
-            <label className="form-label">Medication</label>
-            <input
-              type="text"
-              placeholder="Medication Name or Notes"
-              value={medication}
-              onChange={(e) => setMedication(e.target.value)}
-              className="form-input"
-            />
+            {/* Label + Toggle + Yes/No in one row */}
+            <div className="flex items-center justify-between mb-2">
+              <label className="form-label">Medication or Treatment</label>
+
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition ${
+                    isMedicationOn ? "bg-green-500" : "bg-gray-300"
+                  }`}
+                  onClick={() =>
+                    setMedication((prev) => (prev === "" ? " " : ""))
+                  }
+                >
+                  <div
+                    className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
+                      isMedicationOn ? "translate-x-6" : "translate-x-0"
+                    }`}
+                  ></div>
+                </div>
+                <span className="text-sm text-zinc-700">
+                  {isMedicationOn ? "Yes" : "No"}
+                </span>
+              </div>
+            </div>
+
+            {isMedicationOn && (
+              <div className="mt-2">
+                <input
+                  type="text"
+                  placeholder="Medication Name or Notes"
+                  value={medication}
+                  onChange={(e) => setMedication(e.target.value)}
+                  className="form-input"
+                />
+              </div>
+            )}
           </div>
 
           <div className="pt-4">

@@ -3,7 +3,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
-import { Sidebar } from './components/Sidebar'
+import { TopMenu } from "./components/TopMenu";
 import { Dashboard } from './pages/Dashboard'
 import { Patient } from './pages/Patient';
 import { SymptomsList } from './pages/SymptomsList';
@@ -33,7 +33,7 @@ fetch("https://julia-health-app.onrender.com/api/symptoms")
 
   return (
     <>
-      <Sidebar />
+      <TopMenu />
 
       <Routes>
         <Route path="/" element={<Dashboard symptoms={symptoms} />} />

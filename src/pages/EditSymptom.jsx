@@ -14,7 +14,6 @@ export function EditSymptom({ symptoms, setSymptoms }) {
   const [day, setDay] = useState("");
   const [timeOfDay, setTimeOfDay] = useState([]);
   const [stressLevel, setStressLevel] = useState("");
-  const [hasMedication, setHasMedication] = useState(false);
   const [medication, setMedication] = useState("");
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export function EditSymptom({ symptoms, setSymptoms }) {
       setIntensity(existingSymptom.intensity);
       setStressLevel(existingSymptom.stressLevel);
       setMedication(existingSymptom.medication || "");
-      setHasMedication(!!existingSymptom.medication);
       setDay(existingSymptom.date?.day || "");
       setTimeOfDay(existingSymptom.date?.timeOfDay || []);
     }
@@ -40,7 +38,7 @@ export function EditSymptom({ symptoms, setSymptoms }) {
       type,
       intensity,
       stressLevel,
-      medication: hasMedication ? medication : null,
+      medication: medication.trim() || null,
       date: {
         day,
         timeOfDay,
@@ -48,7 +46,6 @@ export function EditSymptom({ symptoms, setSymptoms }) {
     };
 
     console.log("Updating symptom:", updatedSymptom);
-
 
     fetch(`https://julia-health-app.onrender.com/api/symptoms/${id}`, {
       method: "PUT",
@@ -93,6 +90,8 @@ export function EditSymptom({ symptoms, setSymptoms }) {
     );
   };
 
+  const isMedicationOn = medication !== "";
+
   if (!existingSymptom) {
     return (
       <div className="p-10 text-xl text-red-600 font-semibold">
@@ -102,7 +101,7 @@ export function EditSymptom({ symptoms, setSymptoms }) {
   }
 
   return (
-    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6 lg:pl-82">
+    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6">
       <div className="bg-white w-full shadow-md rounded-xl p-6 max-w-2xl mx-auto space-y-6">
         <h1 className="text-2xl font-bold text-zinc-800 mb-4">Edit Symptom</h1>
 
@@ -180,29 +179,30 @@ export function EditSymptom({ symptoms, setSymptoms }) {
           <div>
             {/* Label + Toggle + Yes/No in one row */}
             <div className="flex items-center justify-between mb-2">
-              <label className="form-label">Medication Taken?</label>
+              <label className="form-label">Medication or Treatment</label>
 
               <div className="flex items-center gap-3">
                 <div
                   className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition ${
-                    hasMedication ? "bg-green-500" : "bg-gray-300"
+                    isMedicationOn ? "bg-green-500" : "bg-gray-300"
                   }`}
-                  onClick={() => setHasMedication(!hasMedication)}
+                  onClick={() =>
+                    setMedication((prev) => (prev === "" ? " " : ""))
+                  }
                 >
                   <div
                     className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
-                      hasMedication ? "translate-x-6" : "translate-x-0"
+                      isMedicationOn ? "translate-x-6" : "translate-x-0"
                     }`}
                   ></div>
                 </div>
                 <span className="text-sm text-zinc-700">
-                  {hasMedication ? "Yes" : "No"}
+                  {isMedicationOn ? "Yes" : "No"}
                 </span>
               </div>
             </div>
 
-            {/* Conditional input below */}
-            {hasMedication && (
+            {isMedicationOn && (
               <div className="mt-2">
                 <input
                   type="text"
