@@ -85,7 +85,7 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
         <div className="flex-1">Title</div>
         <div className="flex-[2]">Description</div>
         <div className="w-28">Intensity</div>
-        <div className="w-28">Mood</div>
+        <div className="w-36">Mood</div>
         <div className="w-24">Date</div>
         <div className="w-32">Time</div>
         <div className="flex-1">Medication</div>
@@ -115,7 +115,7 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
               </span>
             </div>
 
-            <div className="w-28 flex flex-wrap gap-1">
+            <div className="w-36 flex flex-wrap gap-1">
               {(symptom.mood || []).map((m, i) => (
                 <span key={i} className="pill pill-time">
                   {moodEmojis[m] || ""} {m}
