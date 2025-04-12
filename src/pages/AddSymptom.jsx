@@ -8,10 +8,23 @@ export function AddSymptom({ symptoms, setSymptoms }) {
   const [intensity, setIntensity] = useState("");
   const [day, setDay] = useState("");
   const [timeOfDay, setTimeOfDay] = useState([]);
-  const [stressLevel, setStressLevel] = useState("");
   const [medication, setMedication] = useState("");
+  const [mood, setMood] = useState([]);
 
   const navigate = useNavigate();
+
+  const moodOptions = [
+    { label: "Happy", emoji: "😊" },
+    { label: "Calm", emoji: "😌" },
+    { label: "Ok", emoji: "😐" },
+    { label: "Tired", emoji: "😴" },
+    { label: "Overwhelmed", emoji: "😰" },
+    { label: "Stressed", emoji: "😣" },
+    { label: "Sad", emoji: "😢" },
+    { label: "Angry", emoji: "😠" },
+    { label: "Unwell", emoji: "🤒" },
+    { label: "Excited", emoji: "🤩" },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,15 +34,13 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       description,
       type,
       intensity,
-      stressLevel,
-      medication: medication.trim(),
+      mood,
+      medication: medication.trim() || null,
       date: {
         day,
         timeOfDay,
       },
     };
-
-    console.log("Submitting new symptom:", newSymptom);
 
     fetch("https://julia-health-app.onrender.com/api/symptoms", {
       method: "POST",
@@ -53,7 +64,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
     setIntensity("");
     setDay("");
     setTimeOfDay([]);
-    setStressLevel("");
+    setMood([]);
     setMedication("");
   };
 
@@ -92,11 +103,13 @@ export function AddSymptom({ symptoms, setSymptoms }) {
         </h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
+          {/* Type */}
           <div>
             <label className="form-label">Type</label>
             {pillOptions(type, setType, ["Symptom", "Food", "Period"])}
           </div>
 
+          {/* Title */}
           <div>
             <label className="form-label">What did symptom occur?</label>
             <input
@@ -108,6 +121,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
             />
           </div>
 
+          {/* Description */}
           <div>
             <label className="form-label">Describe what you experienced</label>
             <textarea
@@ -118,20 +132,40 @@ export function AddSymptom({ symptoms, setSymptoms }) {
             />
           </div>
 
+          {/* Intensity */}
           <div>
             <label className="form-label">How intense was the symptom?</label>
             {pillOptions(intensity, setIntensity, ["Low", "Medium", "High"])}
           </div>
 
+          {/* Mood */}
           <div>
-            <label className="form-label">Stress Level</label>
-            {pillOptions(stressLevel, setStressLevel, [
-              "Low",
-              "Medium",
-              "High",
-            ])}
+            <label className="form-label">How is your mood?</label>
+            <div className="flex gap-2 flex-wrap">
+              {moodOptions.map(({ label, emoji }) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() =>
+                    setMood((prev) =>
+                      prev.includes(label)
+                        ? prev.filter((m) => m !== label)
+                        : [...prev, label]
+                    )
+                  }
+                  className={`pill-button ${
+                    mood.includes(label)
+                      ? "pill-button-active"
+                      : "pill-button-inactive"
+                  }`}
+                >
+                  {emoji} {label}
+                </button>
+              ))}
+            </div>
           </div>
 
+          {/* Date */}
           <div className="flex-1">
             <label className="form-label">Day</label>
             <input
@@ -143,6 +177,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
             />
           </div>
 
+          {/* Time of Day */}
           <div>
             <label className="form-label">Time of Day</label>
             <div className="flex gap-2 flex-wrap">
@@ -165,11 +200,10 @@ export function AddSymptom({ symptoms, setSymptoms }) {
             </div>
           </div>
 
+          {/* Medication */}
           <div>
-            {/* Label + Toggle + Yes/No in one row */}
             <div className="flex items-center justify-between mb-2">
               <label className="form-label">Medication or Treatment</label>
-
               <div className="flex items-center gap-3">
                 <div
                   className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition ${
@@ -204,6 +238,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
             )}
           </div>
 
+          {/* Submit */}
           <div className="pt-4">
             <button type="submit" className="symptom-button">
               + Add New Symptom

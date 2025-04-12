@@ -10,8 +10,10 @@ const symptomSchema = new mongoose.Schema({
   intensity: String,
   type: String,
   medication: String,
+  mood: [String]
 });
 
-const Symptom = mongoose.model("Symptom", symptomSchema);
+const Symptom =
+  mongoose.models.Symptom || mongoose.model("Symptom", symptomSchema);
 
 module.exports = Symptom;

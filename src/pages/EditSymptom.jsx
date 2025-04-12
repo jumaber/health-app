@@ -13,8 +13,9 @@ export function EditSymptom({ symptoms, setSymptoms }) {
   const [intensity, setIntensity] = useState("");
   const [day, setDay] = useState("");
   const [timeOfDay, setTimeOfDay] = useState([]);
-  const [stressLevel, setStressLevel] = useState("");
   const [medication, setMedication] = useState("");
+  const [hasMedication, setHasMedication] = useState(false);
+  const [mood, setMood] = useState([]);
 
   useEffect(() => {
     if (existingSymptom) {
@@ -22,8 +23,9 @@ export function EditSymptom({ symptoms, setSymptoms }) {
       setDescription(existingSymptom.description);
       setType(existingSymptom.type);
       setIntensity(existingSymptom.intensity);
-      setStressLevel(existingSymptom.stressLevel);
+      setMood(existingSymptom.mood || []);
       setMedication(existingSymptom.medication || "");
+      setHasMedication(!!existingSymptom.medication);
       setDay(existingSymptom.date?.day || "");
       setTimeOfDay(existingSymptom.date?.timeOfDay || []);
     }
@@ -37,15 +39,13 @@ export function EditSymptom({ symptoms, setSymptoms }) {
       description,
       type,
       intensity,
-      stressLevel,
-      medication: medication.trim() || null,
+      mood,
+      medication: hasMedication ? medication : null,
       date: {
         day,
         timeOfDay,
       },
     };
-
-    console.log("Updating symptom:", updatedSymptom);
 
     fetch(`https://julia-health-app.onrender.com/api/symptoms/${id}`, {
       method: "PUT",
@@ -90,7 +90,18 @@ export function EditSymptom({ symptoms, setSymptoms }) {
     );
   };
 
-  const isMedicationOn = medication !== "";
+  const moodOptions = [
+    { label: "Happy", emoji: "😊" },
+    { label: "Calm", emoji: "😌" },
+    { label: "Ok", emoji: "😐" },
+    { label: "Tired", emoji: "😴" },
+    { label: "Overwhelmed", emoji: "😰" },
+    { label: "Stressed", emoji: "😣" },
+    { label: "Sad", emoji: "😢" },
+    { label: "Angry", emoji: "😠" },
+    { label: "Unwell", emoji: "🤒" },
+    { label: "Excited", emoji: "🤩" },
+  ];
 
   if (!existingSymptom) {
     return (
@@ -101,16 +112,18 @@ export function EditSymptom({ symptoms, setSymptoms }) {
   }
 
   return (
-    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6">
+    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6 lg:pl-82">
       <div className="bg-white w-full shadow-md rounded-xl p-6 max-w-2xl mx-auto space-y-6">
         <h1 className="text-2xl font-bold text-zinc-800 mb-4">Edit Symptom</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
+          {/* Type */}
           <div>
             <label className="form-label">Type</label>
             {pillOptions(type, setType, ["Symptom", "Food", "Period"])}
           </div>
 
+          {/* Title */}
           <div>
             <label className="form-label">What did symptom occur?</label>
             <input
@@ -118,32 +131,55 @@ export function EditSymptom({ symptoms, setSymptoms }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="form-input"
+              required
             />
           </div>
 
+          {/* Description */}
           <div>
             <label className="form-label">Describe what you experienced</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="form-textarea"
+              required
             />
           </div>
 
+          {/* Intensity */}
           <div>
             <label className="form-label">How intense was the symptom?</label>
             {pillOptions(intensity, setIntensity, ["Low", "Medium", "High"])}
           </div>
 
+          {/* Mood */}
           <div>
-            <label className="form-label">Stress Level</label>
-            {pillOptions(stressLevel, setStressLevel, [
-              "Low",
-              "Medium",
-              "High",
-            ])}
+            <label className="form-label">How is your mood?</label>
+            <div className="flex gap-2 flex-wrap">
+              {moodOptions.map(({ label, emoji }) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() =>
+                    setMood((prev) =>
+                      prev.includes(label)
+                        ? prev.filter((m) => m !== label)
+                        : [...prev, label]
+                    )
+                  }
+                  className={`pill-button ${
+                    mood.includes(label)
+                      ? "pill-button-active"
+                      : "pill-button-inactive"
+                  }`}
+                >
+                  {emoji} {label}
+                </button>
+              ))}
+            </div>
           </div>
 
+          {/* Date */}
           <div className="flex-1">
             <label className="form-label">Day</label>
             <input
@@ -151,9 +187,11 @@ export function EditSymptom({ symptoms, setSymptoms }) {
               value={day}
               onChange={(e) => setDay(e.target.value)}
               className="form-input"
+              required
             />
           </div>
 
+          {/* Time of Day */}
           <div>
             <label className="form-label">Time of Day</label>
             <div className="flex gap-2 flex-wrap">
@@ -176,33 +214,30 @@ export function EditSymptom({ symptoms, setSymptoms }) {
             </div>
           </div>
 
+          {/* Medication */}
           <div>
-            {/* Label + Toggle + Yes/No in one row */}
             <div className="flex items-center justify-between mb-2">
               <label className="form-label">Medication or Treatment</label>
-
               <div className="flex items-center gap-3">
                 <div
                   className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition ${
-                    isMedicationOn ? "bg-green-500" : "bg-gray-300"
+                    hasMedication ? "bg-green-500" : "bg-gray-300"
                   }`}
-                  onClick={() =>
-                    setMedication((prev) => (prev === "" ? " " : ""))
-                  }
+                  onClick={() => setHasMedication(!hasMedication)}
                 >
                   <div
                     className={`bg-white w-6 h-6 rounded-full shadow-md transform duration-300 ease-in-out ${
-                      isMedicationOn ? "translate-x-6" : "translate-x-0"
+                      hasMedication ? "translate-x-6" : "translate-x-0"
                     }`}
                   ></div>
                 </div>
                 <span className="text-sm text-zinc-700">
-                  {isMedicationOn ? "Yes" : "No"}
+                  {hasMedication ? "Yes" : "No"}
                 </span>
               </div>
             </div>
 
-            {isMedicationOn && (
+            {hasMedication && (
               <div className="mt-2">
                 <input
                   type="text"
@@ -215,6 +250,7 @@ export function EditSymptom({ symptoms, setSymptoms }) {
             )}
           </div>
 
+          {/* Submit */}
           <div className="pt-4">
             <button type="submit" className="symptom-button">
               Update Symptom

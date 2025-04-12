@@ -5,7 +5,7 @@ export function Dashboard() {
       <div>
         <div>
           <h1 className="text-3xl font-bold text-zinc-800">Hi, I'm Júlia 👋</h1>
-          <p className="text-lg text-zinc-600 mt-1 mb-4 max-w-4xl">
+          <p className="text-lg text-zinc-600 mt-4 mb-4 max-w-5xl">
             This is a glimpse into my health journey — I’ve been struggling for
             years, and my quality of life has steadily declined. I'm doing
             everything I can to feel healthy and whole again, and I appreciate
