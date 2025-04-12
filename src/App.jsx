@@ -17,7 +17,7 @@ function App() {
   const [patientInfo, setPatientInfo] = useState(patientInfoData);
 
   useEffect(() => {
-    fetch("http://localhost:5050/api/symptoms")
+    fetch("https://julia-health-app.onrender.com/")
       .then((res) => res.json())
       .then((data) => setSymptoms(data))
       .catch((err) => console.error("Error fetching symptoms:", err));
