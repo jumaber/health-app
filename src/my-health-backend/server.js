@@ -22,6 +22,9 @@ app.get("/", (req, res) => {
 
 // Load the model
 const Symptom = require("./models/Symptom");
+const User = require("./models/User");
+const bcrypt = require("bcrypt");
+
 
 // GET all symptoms
 app.get("/api/symptoms", async (req, res) => {
@@ -87,6 +90,66 @@ app.delete("/api/symptoms/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to delete symptom" });
   }
 });
+
+//Register User
+
+app.post("/api/register", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if user already exists
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(409).json({ message: "Username already exists" });
+    }
+
+    // Hash the password
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+
+    // Save the user
+    const newUser = new User({ username, passwordHash });
+    await newUser.save();
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (err) {
+    console.error("❌ Registration error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+// Login User
+const jwt = require("jsonwebtoken");
+
+app.post("/api/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // 1. Find user
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // 2. Compare password
+    const passwordValid = await bcrypt.compare(password, user.passwordHash);
+    if (!passwordValid) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // 3. Create JWT
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+
+    res.status(200).json({ token });
+  } catch (err) {
+    console.error("❌ Login error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 // Start server
 const PORT = process.env.PORT || 5000;

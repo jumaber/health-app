@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import Symptom from "/src/components/Symptom";
+import Symptom from "/src/components/Symptom"; // Ensure this path is correct
 
 export function SymptomsList({ symptoms, setSymptoms, fetchSymptoms }) {
   return (
     <div className="flex w-screen h-screen overflow-x-hidden px-3 lg:px-30 pt-30 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
       <div className="w-full pr-3 mx-auto space-y-6">
-        {/* Your page content */}
         <div className="flex lg:flex-row flex-col gap-10 justify-between w-full">
           <h1 className="font-bold">Symptoms List</h1>
           <Link to="/add-symptoms">
