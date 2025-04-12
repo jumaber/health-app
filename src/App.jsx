@@ -17,14 +17,16 @@ function App() {
   const [patientInfo, setPatientInfo] = useState(patientInfoData);
 
   useEffect(() => {
-    fetch("https://julia-health-app.onrender.com/")
-      .then((res) => res.json())
-      .then((data) => setSymptoms(data))
-      .catch((err) => console.error("Error fetching symptoms:", err));
+fetch("https://julia-health-app.onrender.com/api/symptoms")
+  .then((res) => res.json())
+  .then((data) => setSymptoms(data))
+  .catch((err) => console.error("Error fetching symptoms:", err));
   }, []);
 
   const fetchSymptoms = async () => {
-    const res = await fetch("http://localhost:5050/api/symptoms");
+    const res = await fetch(
+      "https://julia-health-app.onrender.com/api/symptoms"
+    );
     const data = await res.json();
     setSymptoms(data);
   };

@@ -31,7 +31,7 @@ export function AddSymptom({ symptoms, setSymptoms }) {
 
     console.log("Submitting new symptom:", newSymptom); // 👈 Add this here
 
-    fetch("http://localhost:5050/api/symptoms", {
+    fetch("https://julia-health-app.onrender.com/api/symptoms", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

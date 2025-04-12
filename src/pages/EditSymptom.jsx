@@ -50,7 +50,7 @@ export function EditSymptom({ symptoms, setSymptoms }) {
     console.log("Updating symptom:", updatedSymptom);
 
 
-    fetch(`http://localhost:5050/api/symptoms/${id}`, {
+    fetch(`https://julia-health-app.onrender.com/api/symptoms/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

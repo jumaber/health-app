@@ -42,9 +42,12 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`https://julia-health-app.onrender.com/`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `https://julia-health-app.onrender.com/api/symptoms`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (res.ok) {
         fetchSymptoms(); // 🔁 Refresh data from backend
