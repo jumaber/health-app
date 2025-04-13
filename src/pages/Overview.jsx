@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function Overview({ patientInfo }) {
@@ -124,11 +125,7 @@ export function Overview({ patientInfo }) {
                 </p>
               </div>
               <Link to={med.link} target="_blank" rel="noopener noreferrer">
-                <img
-                  src="/src/assets/external-link.svg"
-                  alt={med.name}
-                  className="w-5 h-5"
-                />
+                <ExternalLink className="w-5 h-5 text-blue-600" />
               </Link>
             </div>
           ))}
@@ -153,11 +150,7 @@ export function Overview({ patientInfo }) {
                 </p>
               </div>
               <Link to={supp.link} target="_blank" rel="noopener noreferrer">
-                <img
-                  src="/src/assets/external-link.svg"
-                  alt={supp.name}
-                  className="w-5 h-5"
-                />
+                <ExternalLink className="w-5 h-5 text-blue-600" />
               </Link>
             </div>
           ))}
@@ -206,11 +199,7 @@ export function Overview({ patientInfo }) {
                 <p>{doc.specialty}</p>
               </div>
               <Link to={doc.link} target="_blank" rel="noopener noreferrer">
-                <img
-                  src="/src/assets/external-link.svg"
-                  alt={doc.name}
-                  className="w-5 h-5"
-                />
+                <ExternalLink className="w-5 h-5 text-blue-600" />
               </Link>
             </div>
           ))}
