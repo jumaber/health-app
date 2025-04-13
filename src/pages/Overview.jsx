@@ -13,22 +13,22 @@ export function Overview({ patientInfo }) {
     currentDoctors,
   } = patientInfo;
 
-  const sectionColors = [
-    "bg-white",
-    "bg-purple-50",
-    "bg-yellow-50",
-    "bg-indigo-50",
-    "bg-green-50",
-    "bg-pink-50",
-    "bg-blue-50",
-    "bg-zinc-50",
+  const sectionBorders = [
+    "border-purple-200",
+    "border-yellow-200",
+    "border-indigo-200",
+    "border-green-200",
+    "border-pink-200",
+    "border-blue-200",
+    "border-zinc-200",
+    "border-amber-200",
   ];
 
   const Section = ({ title, children, colorIndex }) => (
     <section
-      className={`${
-        sectionColors[colorIndex % sectionColors.length]
-      } p-6 rounded-2xl shadow-sm space-y-4`}
+      className={`bg-white p-6 rounded-2xl shadow-sm space-y-4 border ${
+        sectionBorders[colorIndex % sectionBorders.length]
+      }`}
     >
       <h2 className="text-xl font-bold text-zinc-800 border-b border-zinc-300 pb-2">
         {title}
