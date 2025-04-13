@@ -27,7 +27,7 @@ export function Dashboard() {
         <div className="bg-white p-6 rounded-xl shadow-md w-full">
           <p className="text-lg text-zinc-600">
             👀 The{" "}
-            <Link to="/patient" className="text-link">
+            <Link to="/overview" className="text-link">
               Overview
             </Link>{" "}
             is for you to check information such as my general information,

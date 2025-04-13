@@ -38,7 +38,7 @@ export function TopMenu() {
           <NavLink to="/timeline" className={linkStyle}>
             Timeline
           </NavLink>
-          <NavLink to="/patient" className={linkStyle}>
+          <NavLink to="/overview" className={linkStyle}>
             Overview
           </NavLink>
           <NavLink to="/symptoms" className={linkStyle}>
@@ -65,14 +65,14 @@ export function TopMenu() {
       {isOpen && (
         <nav className="flex flex-col items-end rounded-b-xl  md:hidden px-4 py-4 gap-2 bg-white border-t border-zinc-100 ">
           <NavLink
-            to="/"
+            to="/timeline"
             className={linkStyle}
             onClick={() => setIsOpen(false)}
           >
             Timeline
           </NavLink>
           <NavLink
-            to="/patient"
+            to="/overview"
             className={linkStyle}
             onClick={() => setIsOpen(false)}
           >

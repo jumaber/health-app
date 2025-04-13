@@ -7,7 +7,7 @@ export function SymptomsList({ symptoms, setSymptoms, fetchSymptoms }) {
       <div className="w-full pr-3 mx-auto space-y-6">
         {/* Your page content */}
         <div className="flex lg:flex-row flex-col gap-10 justify-between w-full">
-          <h1 className="text-3xl font-bold text-zinc-800">Symptoms</h1>
+          <h1 className="text-3xl font-bold text-zinc-800">🚨 Symptoms</h1>
           <Link to="/add-symptoms">
             <button className="symptom-button">+ Add Symptom</button>
           </Link>

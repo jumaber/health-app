@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { TopMenu } from "./components/TopMenu";
 import { Dashboard } from "./pages/Dashboard";
-import { Patient } from "./pages/Patient";
+import { Overview } from "./pages/Overview";
 import { SymptomsList } from "./pages/SymptomsList";
 import { AddSymptom } from "./pages/AddSymptom";
 import { EditSymptom } from "./pages/EditSymptom";
@@ -60,8 +60,8 @@ function App() {
               element={<Timeline symptoms={symptoms} />}
             />
             <Route
-              path="/patient"
-              element={<Patient patientInfo={patientInfo} />}
+              path="/overview"
+              element={<Overview patientInfo={patientInfo} />}
             />
             <Route
               path="/symptoms"

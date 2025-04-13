@@ -4,7 +4,7 @@ export function Timeline() {
       {/* Header */}
       <div>
         <div>
-          <h1 className="text-3xl font-bold text-zinc-800">Timeline</h1>
+          <h1 className="text-3xl font-bold text-zinc-800">⏳ Timeline</h1>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row lg: gap-10">
