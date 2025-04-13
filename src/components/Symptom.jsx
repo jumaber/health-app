@@ -137,7 +137,7 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
                 {/* Mobile label + date inline */}
                 <div className="flex flex-col lg:hidden gap-2">
                   <span className="font-bold text-zinc-600 text-xs">
-                    Date & Time {""}
+                    Date & Time
                   </span>
                   <span className={getDateClass()}>
                     {formatDate(symptom.date?.day)}
@@ -163,9 +163,9 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
               </div>
             </div>
 
-            <div className="flex-1 italic text-sm text-zinc-700 content-center">
-              <span className="font-bold text-zinc-600 text-sm lg:hidden">
-                Medication or Treatment:{" "}
+            <div className="flex-1 text-sm text-zinc-700 content-center">
+              <span className="font-bold text-zinc-600 text-xs lg:hidden">
+                Medication or Treatment{" "}
               </span>
               {symptom.medication || <span className="text-zinc-400">—</span>}
             </div>
