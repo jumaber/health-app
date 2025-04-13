@@ -8,7 +8,7 @@
 }
 
 .symptom-button{
-  @apply px-4 py-2 bg-blue-600 text-white font-bold rounded-lg max-h-max w-full md:max-w-max 
+  @apply px-4 py-2 bg-blue-600 text-white font-bold rounded-lg max-h-max w-full lg:max-w-max 
 }
 
 
@@ -104,4 +104,8 @@
 
 .pill-date {
   @apply bg-zinc-200 text-zinc-700;
+}
+
+.text-link {
+  @apply text-blue-600 font-bold underline;
 }

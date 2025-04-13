@@ -30,9 +30,8 @@ export function Patient({ patientInfo }) {
   return (
     <div className="flex flex-col w-screen h-screen overflow-x-hidden px-3 lg:px-30 pt-30 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
       <h1 className="text-3xl font-bold text-zinc-800 mb-6">
-        Patient Overview
+        Overview
       </h1>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Section title="About Me">
           <ul className="divide-y divide-zinc-200">

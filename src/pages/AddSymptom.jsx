@@ -42,6 +42,15 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       },
     };
 
+     setTitle("");
+     setDescription("");
+     setType("");
+     setIntensity("");
+     setDay("");
+     setTimeOfDay([]);
+     setMood([]);
+     setMedication("");
+
     fetch("https://julia-health-app.onrender.com/api/symptoms", {
       method: "POST",
       headers: {
@@ -51,21 +60,14 @@ export function AddSymptom({ symptoms, setSymptoms }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setSymptoms([data, ...symptoms]);
+        fetchSymptoms(); // ← refresh with full server list
         navigate("/symptoms");
       })
+
       .catch((error) => {
         console.error("Error adding symptom:", error);
       });
-
-    setTitle("");
-    setDescription("");
-    setType("");
-    setIntensity("");
-    setDay("");
-    setTimeOfDay([]);
-    setMood([]);
-    setMedication("");
+      
   };
 
   const pillOptions = (state, setState, options) => (
