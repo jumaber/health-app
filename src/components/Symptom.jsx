@@ -57,18 +57,19 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(
-        `https://julia-health-app.onrender.com/api/symptoms/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      // Send DELETE request to backend
+      const res = await fetch(`http://localhost:10000/api/symptoms/${id}`, {
+        method: "DELETE",
+      });
 
       if (res.ok) {
-        fetchSymptoms(); // 🔁 Refresh data from backend
+        // If deletion is successful, update the symptoms state
+        fetchSymptoms(); // or manually update the symptoms array after deletion
+      } else {
+        console.error("Failed to delete symptom");
       }
     } catch (err) {
-      console.error("Failed to delete:", err);
+      console.error("Error deleting symptom:", err);
     }
   };
 
@@ -153,7 +154,7 @@ export default function Symptom({ symptoms, fetchSymptoms }) {
                 <Pencil size={16} />
               </button>
               <button
-                onClick={() => handleDelete(symptom._id)}
+                onClick={() => handleDelete(symptom._id)} 
                 className="p-2 rounded-full bg-red-100 hover:bg-red-200"
                 aria-label="Delete"
               >
