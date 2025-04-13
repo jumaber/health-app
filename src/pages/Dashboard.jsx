@@ -20,7 +20,7 @@ export function Dashboard() {
             <Link to="/timeline" className="text-link">
               Timeline
             </Link>{" "}
-            to understand the development of my health journey.
+            to explore my health journey through the years.
           </p>
         </div>
 
