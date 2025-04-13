@@ -54,8 +54,12 @@ export function EditSymptom({ symptoms, setSymptoms }) {
       },
       body: JSON.stringify(updatedSymptom),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("PUT status:", res.status);
+        return res.json();
+      })
       .then((data) => {
+        console.log("Updated symptom:", data);
         const updatedList = symptoms.map((s) => (s._id === id ? data : s));
         setSymptoms(updatedList);
         navigate("/symptoms");

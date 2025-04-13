@@ -36,6 +36,11 @@ const symptomSchema = new mongoose.Schema({
 const Symptom = mongoose.model("Symptom", symptomSchema);
 
 // Routes
+
+app.get("/api/ping", (req, res) => {
+  res.json({ message: "✅ You’re hitting the backend!" });
+});
+
 // GET a single symptom by ID (for testing or debugging)
 // GET all symptoms
 app.get("/api/symptoms", async (req, res) => {
@@ -47,7 +52,27 @@ app.get("/api/symptoms", async (req, res) => {
   }
 });
 
+// PUT (update) a symptom by ID
+app.put("/api/symptoms/:id", async (req, res) => {
+  try {
+    const updatedSymptom = await Symptom.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
 
+    if (!updatedSymptom) {
+      return res.status(404).json({ message: "Symptom not found" });
+    }
+
+    res.json(updatedSymptom);
+  } catch (err) {
+    console.error("❌ Update failed:", err);
+    res.status(500).json({ message: "Failed to update symptom" });
+  }
+});
+
+// Post Symptom
 app.post("/api/symptoms", async (req, res) => {
   try {
     const newSymptom = new Symptom(req.body);

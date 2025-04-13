@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function AddSymptom({ symptoms, setSymptoms }) {
+export function AddSymptom({ symptoms, setSymptoms, fetchSymptoms }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
@@ -42,14 +42,14 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       },
     };
 
-     setTitle("");
-     setDescription("");
-     setType("");
-     setIntensity("");
-     setDay("");
-     setTimeOfDay([]);
-     setMood([]);
-     setMedication("");
+    setTitle("");
+    setDescription("");
+    setType("");
+    setIntensity("");
+    setDay("");
+    setTimeOfDay([]);
+    setMood([]);
+    setMedication("");
 
     fetch("https://julia-health-app.onrender.com/api/symptoms", {
       method: "POST",
@@ -67,7 +67,6 @@ export function AddSymptom({ symptoms, setSymptoms }) {
       .catch((error) => {
         console.error("Error adding symptom:", error);
       });
-      
   };
 
   const pillOptions = (state, setState, options) => (
