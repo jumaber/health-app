@@ -16,7 +16,7 @@ export function Dashboard() {
 
         <div className="bg-white p-6 rounded-xl shadow-md w-full">
           <p className="text-lg text-zinc-600">
-            ⏳ On my{" "}
+            ⏳ Visit my{" "}
             <Link to="/timeline" className="text-link">
               Timeline
             </Link>{" "}
