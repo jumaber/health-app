@@ -91,7 +91,7 @@
 }
 
 .pill-low {
-  @apply bg-yellow-200 text-yellow-700;
+  @apply bg-green-200 text-green-700;
 }
 
 .pill-medium {

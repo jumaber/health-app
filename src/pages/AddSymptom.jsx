@@ -182,7 +182,7 @@ export function AddSymptom({ symptoms, setSymptoms, fetchSymptoms }) {
           <div>
             <label className="form-label">Time of Day</label>
             <div className="flex gap-2 flex-wrap">
-              {["Morning", "Noon", "Afternoon", "Evening", "Night"].map(
+              {["Morning", "Noon", "Afternoon", "Evening", "Night", "All Day"].map(
                 (option) => (
                   <button
                     key={option}

@@ -81,14 +81,14 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
   return (
     <div className="flex flex-col gap-4 py-5 w-full">
       {/* Header Row */}
-      <div className="bg-white hidden lg:flex flex-row lg:gap-4 gap-2 p-4 font-bold text-lg text-zinc-500 rounded-lg w-full">
+      <div className="bg-white hidden lg:flex flex-row lg:gap-6 lg:gap-6 p-4 font-bold text-lg text-zinc-500 rounded-lg w-full">
+        <div className="w-50">Title</div>
+        <div className="w-90">Description</div>
         <div className="w-24">Type</div>
-        <div className="flex-1">Title</div>
-        <div className="flex-[2]">Description</div>
         <div className="w-28">Intensity</div>
         <div className="w-36">Mood</div>
         <div className="w-32">Date & Time</div>
-        <div className="flex-1">Medication</div>
+        <div className="w-48">Medication</div>
         <div className="w-20">Actions</div>
       </div>
 
@@ -99,15 +99,22 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
         return (
           <div
             key={symptom._id}
-            className="flex flex-col lg:flex-row gap-3 p-4 bg-blue-50 hover:bg-blue-100 transition rounded-xl w-full border border-blue-200"
+            className="flex flex-col lg:flex-row lg:gap-6 gap-4 p-4 bg-blue-50 hover:bg-blue-100 transition rounded-xl w-full border border-blue-200"
           >
-            <div className="lg:w-24">
-              <span className={getTypeClass(symptom.type)}>{symptom.type}</span>
+            <div className="lg:w-50 text-xl lg:text-lg font-bold">
+              {symptom.title}
             </div>
 
-            <div className="flex-1 text-xl pb-0 font-bold">{symptom.title}</div>
+            <div className="lg:w-90 text-zinc-700 pb-2">
+              {symptom.description}
+            </div>
 
-            <div className="flex-[2] text-zinc-700">{symptom.description}</div>
+            <div className="lg:w-24 flex flex-col gap-1">
+              <span className="font-bold text-zinc-500 text-xs lg:hidden">
+                Type
+              </span>
+              <span className={getTypeClass(symptom.type)}>{symptom.type}</span>
+            </div>
 
             <div className="flex flex-col gap-1 lg:w-28 content-center">
               <span className="font-bold text-zinc-500 text-xs lg:hidden">
@@ -136,7 +143,7 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
                 {/* Mobile label + date inline */}
                 <div className="flex flex-col lg:hidden gap-2">
-                  <span className="font-bold text-zinc-600 text-xs">
+                  <span className="font-bold text-zinc-500 text-xs">
                     Date & Time
                   </span>
                   <span className={getDateClass()}>
@@ -163,8 +170,8 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
               </div>
             </div>
 
-            <div className="flex-1 text-sm text-zinc-700 content-center">
-              <span className="font-bold text-zinc-600 text-xs lg:hidden">
+            <div className="flex flex-col  lg:w-48 text-sm text-zinc-700 content-center">
+              <span className="font-bold text-zinc-500 text-xs lg:hidden">
                 Medication or Treatment{" "}
               </span>
               {symptom.medication || <span className="text-zinc-400">—</span>}
@@ -180,7 +187,7 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
               </button>
               <button
                 onClick={() => handleDelete(symptom._id)}
-                className="p-2 rounded-full bg-red-300 hover:bg-blue-00"
+                className="p-2 rounded-full bg-white hover:bg-blue-300"
                 aria-label="Delete"
               >
                 <Trash2 size={16} />
