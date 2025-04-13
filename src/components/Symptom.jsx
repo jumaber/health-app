@@ -89,7 +89,7 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
         <div className="w-36">Mood</div>
         <div className="w-32">Date & Time</div>
         <div className="w-48">Medication</div>
-        <div className="w-20">Actions</div>
+        <div className="flex flex-1 justify-end">Actions</div>
       </div>
 
       {/* Data Rows */}
@@ -177,7 +177,7 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
               {symptom.medication || <span className="text-zinc-400">—</span>}
             </div>
 
-            <div className="flex lg:w-20 gap-2 lg:items-center items-end justify-end">
+            <div className="flex lg:flex-1 gap-2 lg:items-center items-end justify-end">
               <button
                 onClick={() => handleEdit(symptom._id)}
                 className="p-2 rounded-full bg-white hover:bg-blue-300"

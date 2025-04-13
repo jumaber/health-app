@@ -12,29 +12,46 @@ export function Overview({ patientInfo }) {
     currentDoctors,
   } = patientInfo;
 
-  const Section = ({ title, children }) => (
-    <section className="bg-white p-6 rounded-2xl shadow-sm space-y-4">
-      <h2 className="text-xl font-bold text-blue-700 border-b pb-2">{title}</h2>
+  const sectionColors = [
+    "bg-white",
+    "bg-purple-50",
+    "bg-yellow-50",
+    "bg-indigo-50",
+    "bg-green-50",
+    "bg-pink-50",
+    "bg-blue-50",
+    "bg-zinc-50",
+  ];
+
+  const Section = ({ title, children, colorIndex }) => (
+    <section
+      className={`${
+        sectionColors[colorIndex % sectionColors.length]
+      } p-6 rounded-2xl shadow-sm space-y-4`}
+    >
+      <h2 className="text-xl font-bold text-zinc-800 border-b border-zinc-300 pb-2">
+        {title}
+      </h2>
       {children}
     </section>
   );
 
-  const Pill = ({ children }) => (
-    <div className="bg-blue-100 text-zinc-800 px-4 py-2 rounded-xl font-medium">
+  const Pill = ({ children, color = "bg-blue-100 text-zinc-800" }) => (
+    <div className={`px-4 py-2 rounded-xl font-medium ${color}`}>
       {children}
     </div>
   );
 
-  const Divider = () => <hr className="border-t border-zinc-200 my-4" />;
+  const Divider = () => <hr className="border-t border-zinc-300 my-4" />;
 
   return (
     <div className="flex flex-col w-screen h-screen overflow-x-hidden px-3 lg:px-30 pt-30 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
-      <h1 className="text-3xl font-bold text-zinc-800 mb-6">
+      <h1 className="text-4xl font-extrabold text-zinc-800 mb-6">
         👀 Overview
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Section title="About Me">
-          <ul className="divide-y divide-zinc-200">
+        <Section title="👤 About Me" colorIndex={0}>
+          <ul className="divide-y divide-zinc-300">
             <li className="py-2">
               <strong>Name:</strong> {userInformation.name}
             </li>
@@ -65,7 +82,7 @@ export function Overview({ patientInfo }) {
           </ul>
         </Section>
 
-        <Section title="Current Diagnosis">
+        <Section title="🩺 Current Diagnosis" colorIndex={1}>
           {currentDiagnosis.map((item, i) => (
             <div key={i} className="space-y-1">
               <p className="text-lg font-semibold">{item.condition}</p>
@@ -80,23 +97,23 @@ export function Overview({ patientInfo }) {
           ))}
         </Section>
 
-        <Section title="Allergies">
+        <Section title="🌿 Allergies" colorIndex={2}>
           <div className="flex flex-wrap gap-3">
             {allergies.map((item, i) => (
-              <Pill key={i}>
+              <Pill key={i} color="bg-amber-100 text-amber-800">
                 {item.name} – {item.severity}
               </Pill>
             ))}
           </div>
         </Section>
 
-        <Section title="Medication">
+        <Section title="💊 Medication" colorIndex={3}>
           {currentMedication.map((med, i) => (
             <div
               key={i}
               className={`flex justify-between items-center py-2 ${
                 i !== currentMedication.length - 1
-                  ? "border-b border-zinc-200"
+                  ? "border-b border-zinc-300"
                   : ""
               }`}
             >
@@ -117,13 +134,13 @@ export function Overview({ patientInfo }) {
           ))}
         </Section>
 
-        <Section title="Supplements">
+        <Section title="🍀 Supplements" colorIndex={4}>
           {currentSupplements.map((supp, i) => (
             <div
               key={i}
               className={`flex justify-between items-center py-2 ${
                 i !== currentSupplements.length - 1
-                  ? "border-b border-zinc-200"
+                  ? "border-b border-zinc-300"
                   : ""
               }`}
             >
@@ -146,7 +163,7 @@ export function Overview({ patientInfo }) {
           ))}
         </Section>
 
-        <Section title="Current Treatments">
+        <Section title="🧘‍♀️ Current Treatments" colorIndex={5}>
           {currentTreatments.map((item, i) => (
             <div key={i} className="space-y-1">
               <p className="text-lg font-semibold">{item.name}</p>
@@ -164,21 +181,23 @@ export function Overview({ patientInfo }) {
           ))}
         </Section>
 
-        <Section title="Diet Adjustments">
+        <Section title="🥗 Diet Adjustments" colorIndex={6}>
           <div className="flex flex-wrap gap-3">
             {currentDietAdjustments.map((diet, i) => (
-              <Pill key={i}>{diet}</Pill>
+              <Pill key={i} color="bg-blue-100 text-blue-700">
+                {diet}
+              </Pill>
             ))}
           </div>
         </Section>
 
-        <Section title="Current Doctors">
+        <Section title="👩‍⚕️ Current Doctors" colorIndex={7}>
           {currentDoctors.map((doc, i) => (
             <div
               key={i}
               className={`flex justify-between items-center py-2 ${
                 i !== currentDoctors.length - 1
-                  ? "border-b border-zinc-200"
+                  ? "border-b border-zinc-300"
                   : ""
               }`}
             >
