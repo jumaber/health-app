@@ -11,6 +11,10 @@
   @apply px-4 py-2 bg-blue-600 text-white font-bold rounded-lg max-h-max w-full lg:max-w-max 
 }
 
+.symptom-button-lg{
+  @apply px-4 py-2 bg-blue-600 text-white font-bold rounded-lg max-h-max w-full
+}
+
 
 .info-box {
   @apply flex flex-row flex-wrap gap-8 my-6 p-8 bg-white rounded-lg w-full;
@@ -103,7 +107,7 @@
 }
 
 .pill-date {
-  @apply bg-zinc-200 text-zinc-700;
+  @apply bg-white text-zinc-700;
 }
 
 .text-link {

@@ -112,7 +112,7 @@ export function EditSymptom({ symptoms, setSymptoms }) {
   }
 
   return (
-    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-10 md:px-6 lg:pl-82">
+    <div className="flex w-screen overflow-x-hidden bg-zinc-100 min-h-screen px-3 pb-20 pt-22 lg:pt-30 md:px-6">
       <div className="bg-white w-full shadow-md rounded-xl p-6 max-w-2xl mx-auto space-y-6">
         <h1 className="text-2xl font-bold text-zinc-800 mb-4">Edit Symptom</h1>
 
@@ -252,7 +252,7 @@ export function EditSymptom({ symptoms, setSymptoms }) {
 
           {/* Submit */}
           <div className="pt-4">
-            <button type="submit" className="symptom-button">
+            <button type="submit" className="symptom-button-lg">
               Update Symptom
             </button>
           </div>

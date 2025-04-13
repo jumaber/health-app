@@ -63,7 +63,7 @@ export function TopMenu() {
 
       {/* Mobile dropdown */}
       {isOpen && (
-        <nav className="md:hidden px-4 pb-4 space-y-2 bg-white border-t">
+        <nav className="flex flex-col items-end rounded-b-xl  md:hidden px-4 py-4 gap-2 bg-white border-t border-zinc-100 ">
           <NavLink
             to="/"
             className={linkStyle}

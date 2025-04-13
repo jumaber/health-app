@@ -9,6 +9,8 @@ import { AddSymptom } from "./pages/AddSymptom";
 import { EditSymptom } from "./pages/EditSymptom";
 import { Login } from "./pages/Login"; 
 import { Timeline } from "./pages/Timeline"; 
+import { NotFound } from "./pages/NotFound";
+
 import patientInfoData from "./patientInfo.json"; 
 import { auth } from "./firebase"; // Import the auth instance from firebase.js
 import { onAuthStateChanged } from "firebase/auth";  // Import onAuthStateChanged
@@ -53,7 +55,10 @@ function App() {
           <TopMenu />
           <Routes>
             <Route path="/" element={<Dashboard symptoms={symptoms} />} />
-            <Route path="/timeline" element={<Timeline symptoms={symptoms} />} />
+            <Route
+              path="/timeline"
+              element={<Timeline symptoms={symptoms} />}
+            />
             <Route
               path="/patient"
               element={<Patient patientInfo={patientInfo} />}
@@ -84,6 +89,7 @@ function App() {
                 <EditSymptom symptoms={symptoms} setSymptoms={setSymptoms} />
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </>
       ) : (

@@ -1,6 +1,6 @@
 export function Timeline() {
   return (
-    <div className="flex flex-col w-screen h-screen overflow-x-hidden px-3 lg:px-30 pt-30 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
+    <div className="flex flex-col w-screen h-screen overflow-x-hidden px-4 lg:px-30 pt-30 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
       {/* Header */}
       <div>
         <div>

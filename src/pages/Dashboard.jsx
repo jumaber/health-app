@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Dashboard() {
   return (
-    <div className="flex flex-col w-screen h-screen items-center overflow-x-hidden px-3 pt-22 lg:pt-30 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
+    <div className="flex flex-col w-screen h-screen content-center items-center overflow-x-hidden px-4 pt-22 lg:pt-40 bg-zinc-100 min-h-screen pb-20 pt-10 md:px-6">
       {/* Header */}
       <div className="flex flex-col max-w-4xl items-start gap-2">
         <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-center items-start">

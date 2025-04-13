@@ -12,11 +12,12 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-const MONGO_URI = process.env.MONGO_URI || "your-default-mongo-uri";
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const MONGO_URI =
+  process.env.MONGO_URI ||
+  "mongodb+srv://jumaber:K0ktVbUTSwQBCUJj@myhealthapp.umwqmav.mongodb.net/?retryWrites=true&w=majority&appName=MyHealthApp";
+mongoose.connect(MONGO_URI)
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // Define Symptom schema and model
 const symptomSchema = new mongoose.Schema({
@@ -35,14 +36,17 @@ const symptomSchema = new mongoose.Schema({
 const Symptom = mongoose.model("Symptom", symptomSchema);
 
 // Routes
+// GET a single symptom by ID (for testing or debugging)
+// GET all symptoms
 app.get("/api/symptoms", async (req, res) => {
   try {
     const symptoms = await Symptom.find();
     res.json(symptoms);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching symptoms", error });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
+
 
 app.post("/api/symptoms", async (req, res) => {
   try {
@@ -53,6 +57,21 @@ app.post("/api/symptoms", async (req, res) => {
     res.status(400).json({ message: "Error saving symptom", error });
   }
 });
+
+// DELETE a symptom by ID
+app.delete("/api/symptoms/:id", async (req, res) => {
+  try {
+    const deletedSymptom = await Symptom.findByIdAndDelete(req.params.id);
+    if (!deletedSymptom) {
+      return res.status(404).json({ message: "Symptom not found" });
+    }
+    res.status(200).json({ message: "Symptom deleted successfully" });
+  } catch (err) {
+    console.error("❌ Delete failed:", err);
+    res.status(500).json({ message: "Failed to delete symptom" });
+  }
+});
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
