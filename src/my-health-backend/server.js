@@ -1,8 +1,10 @@
+// server.js
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config();
 
+// Initialize Express app
 const app = express();
 
 // Middleware
@@ -10,86 +12,50 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
-
-// Basic test route
-app.get("/", (req, res) => {
-  res.send("Hello from the backend!");
+const MONGO_URI = process.env.MONGO_URI || "your-default-mongo-uri";
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-// Load the model
-const Symptom = require("./models/Symptom");
+// Define Symptom schema and model
+const symptomSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  type: String,
+  intensity: String,
+  mood: [String],
+  medication: String,
+  date: {
+    day: String,
+    timeOfDay: [String],
+  },
+});
 
-// GET all symptoms
+const Symptom = mongoose.model("Symptom", symptomSchema);
+
+// Routes
 app.get("/api/symptoms", async (req, res) => {
   try {
     const symptoms = await Symptom.find();
     res.json(symptoms);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching symptoms", error });
   }
 });
 
-// POST a new symptom
 app.post("/api/symptoms", async (req, res) => {
-  console.log("🛬 Received req.body:");
-  console.dir(req.body, { depth: null }); // Full object printout
-
-  const newSymptom = new Symptom(req.body);
-
   try {
-    const saved = await newSymptom.save();
-    console.log("✅ Saved to MongoDB:");
-    console.dir(saved, { depth: null }); // What actually saved
-    res.status(201).json(saved);
-  } catch (err) {
-    console.error("❌ Error saving symptom:", err);
-    res.status(400).json({ message: err.message });
-  }
-});
-
-
-// PUT (update) an existing symptom
-app.put("/api/symptoms/:id", async (req, res) => {
-  try {
-    const updatedSymptom = await Symptom.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-
-    if (!updatedSymptom) {
-      return res.status(404).json({ message: "Symptom not found" });
-    }
-
-    res.json(updatedSymptom);
-  } catch (err) {
-    console.error("❌ Update failed:", err);
-    res.status(500).json({ message: "Failed to update symptom" });
-  }
-});
-
-// DELETE a symptom by ID
-app.delete("/api/symptoms/:id", async (req, res) => {
-  try {
-    const deletedSymptom = await Symptom.findByIdAndDelete(req.params.id);
-
-    if (!deletedSymptom) {
-      return res.status(404).json({ message: "Symptom not found" });
-    }
-
-    res.status(200).json({ message: "Symptom deleted successfully" });
-  } catch (err) {
-    console.error("❌ Delete failed:", err);
-    res.status(500).json({ message: "Failed to delete symptom" });
+    const newSymptom = new Symptom(req.body);
+    const savedSymptom = await newSymptom.save();
+    res.status(201).json(savedSymptom);
+  } catch (error) {
+    res.status(400).json({ message: "Error saving symptom", error });
   }
 });
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
