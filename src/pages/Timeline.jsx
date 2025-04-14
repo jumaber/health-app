@@ -12,7 +12,7 @@ export function Timeline() {
             <div className="absolute top-0 left-[-10px] w-4 h-4 bg-blue-500 rounded-full" />
 
             <div>
-              <p className="text-zinc-800 text-lg font-bold">
+              <p className="text-blue-600 text-lg lg:text-base font-bold">
                 Childhood → Teens
               </p>
               <p className="text-zinc-600">
@@ -23,7 +23,7 @@ export function Timeline() {
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 Early 2000s — First Signs of Deeper Imbalance
               </p>
               <p className="text-zinc-600">
@@ -34,7 +34,7 @@ export function Timeline() {
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 2015 — First Child
               </p>
               <p className="text-zinc-600">
@@ -44,7 +44,7 @@ export function Timeline() {
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 2018 — Second Child + Gestational Diabetes
               </p>
               <p className="text-zinc-600">
@@ -55,7 +55,7 @@ export function Timeline() {
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 2018 — Diagnosed with Hashimoto’s
               </p>
               <p className="text-zinc-600">
@@ -66,7 +66,7 @@ export function Timeline() {
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 2022 — Factor XIII Deficiency + Rosacea Treatment
               </p>
               <p className="text-zinc-600">
@@ -77,47 +77,47 @@ export function Timeline() {
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 2024 — Hormonal Treatment Begins
               </p>
-              <p className="text-green-700">
+              <p className="text-zinc-700">
                 Started <strong>Chlormadinone</strong>. Helped with mood swings
                 and hot flashes. Migraines persisted.
               </p>
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 Feb 2025 — Eye Emergency
               </p>
-              <p className="text-rose-700">
+              <p className="text-zinc-700">
                 Sudden vision loss during migraine. Diagnosed as{" "}
                 <em>migraine with atypical aura</em>.
               </p>
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 May 2025 — Hormonal IUD
               </p>
-              <p className="text-green-700">
-                Started <strong>Mirena IUD</strong> to regulate cycle and
+              <p className="text-zinc-700">
+                Will start <strong>Mirena IUD</strong> to regulate cycle and
                 hormones long-term.
               </p>
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
                 June 2025 — Allergy Desensitization
               </p>
-              <p className="text-green-700">
-                Began <strong>birch pollen allergy desensitization</strong>{" "}
+              <p className="text-zinc-700">
+                Will begin <strong>birch pollen allergy desensitization</strong>{" "}
                 (3-year plan).
               </p>
             </div>
 
             <div>
-              <p className="text-zinc-800 font-bold text-lg">Now</p>
+              <p className="text-blue-600 font-bold text-lg lg:text-base">Now</p>
               <p className="text-zinc-600">
                 Continuing meds (L-thyroxine, Chlormadinone), supplements,
                 restricted diet. Prioritizing light activity and recovery.
@@ -137,8 +137,7 @@ export function Timeline() {
               long-term bleeding/migraine management.
             </li>
             <li>
-              Visit a <strong>nuclear medicine doctor</strong> to check my{" "}
-              <span className="text-blue-800 font-semibold">thyroid</span>.
+              Visit a <strong>nuclear medicine doctor</strong> to check my thyroid.
             </li>
             <li>
               Try to get an appointment with an <strong>endocrinologist</strong>{" "}
@@ -146,7 +145,7 @@ export function Timeline() {
             </li>
             <li>
               Continue{" "}
-              <span className="font-bold text-green-700">
+              <span className="font-bold text-zinc-700">
                 low-inflammatory diet
               </span>
               , <strong>therapy</strong>, and gentle exercise like yoga and
