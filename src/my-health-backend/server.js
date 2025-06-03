@@ -37,6 +37,12 @@ const Symptom = mongoose.model("Symptom", symptomSchema);
 
 // Routes
 
+// Health check root route
+app.get("/", (req, res) => {
+  res.send("Hello from the backend!");
+});
+
+
 app.get("/api/ping", (req, res) => {
   res.json({ message: "✅ You’re hitting the backend!" });
 });
