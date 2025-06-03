@@ -46,11 +46,18 @@ function App() {
       );
       if (!res.ok) throw new Error("Fetch failed");
       const data = await res.json();
-      setSymptoms(data);
+
+      // Sort by date.day descending (newest first)
+      const sorted = data.sort((a, b) => {
+        return new Date(b.date?.day) - new Date(a.date?.day);
+      });
+
+      setSymptoms(sorted);
     } catch (err) {
       console.error("Failed to fetch symptoms:", err);
     }
   };
+  
   
 
   return (
