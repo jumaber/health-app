@@ -34,10 +34,20 @@
       "diagnosisYear": "2022",
       "notes": "Heavy menstrual bleeding, more than usual bleeding (over 500ml) for every natural birth, mentioned after operations."
     },
-      {
+    {
       "condition": "Rosacea",
       "diagnosisYear": "2005",
       "notes": "Got increasingly worse with years until in 2022 I did a 9-month Soolantra treatement and it improved."
+    },
+    {
+      "condition": "Endometriosis",
+      "diagnosisYear": "2025",
+      "notes": "Blueberry spots were seen at the insertion of the Mirena IUD. Together with the other symptoms, Endometiosis was diagnosed."
+    },
+    {
+      "condition": "Prediabetes",
+      "diagnosisYear": "2025",
+      "notes": "OGGT Glucose Tolerance Test: 199 at 1 hour, 167 at 2 hours."
     }
   ],
 
@@ -45,7 +55,6 @@
     {
       "name": "Birch Pollen",
       "severity": "Medium-High"
-      
     },
     {
       "name": "Birch Pollen: Cross-Reaction with Rosaceae Family Foods",
@@ -79,13 +88,20 @@
        "intakeTime": "When needed",
        "url": "https://www.omnivision.de/produkt/azela-vision-sine/"
      },
-      {
-        "name": "Mometason",
-        "amount": "1 spray in every nostril",
-        "frequency": "1 day in pollen season",
-        "intakeTime": "When needed",
-        "url": "https://www.docmorris.de/mometason-adgc-50ugsp-140-nasenspray/"
-      }
+    {
+      "name": "Mometason",
+      "amount": "1 spray in every nostril",
+      "frequency": "1 day in pollen season",
+      "intakeTime": "When needed",
+      "url": "https://www.docmorris.de/mometason-adgc-50ugsp-140-nasenspray/"
+    },
+    {
+      "name": "Aurobindo sumatriptan",
+      "amount": "100mg",
+      "frequency": "-",
+      "intakeTime": "When aura starts",
+      "url": "https://www.shop-apotheke.com/arzneimittel/5454332/sumatriptan-aurobindo-50-mg.htm"
+    }
   ],
 
   "currentSupplements": [

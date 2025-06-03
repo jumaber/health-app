@@ -98,26 +98,35 @@ export function Timeline() {
 
             <div>
               <p className="text-blue-600 font-bold text-lg lg:text-base">
-                May 2025 — Hormonal IUD
+                May 2025 — Hormonal IUD, Endometriosis & Prediabetes
               </p>
               <p className="text-zinc-700">
-                Will start <strong>Mirena IUD</strong> to regulate cycle and
-                hormones long-term.
+                <strong>Mirena IUD</strong> implantation was successful.
+                <br />
+                Diagnosed with <strong>Endometriosis</strong>. <br />
+                Diagnosed with <strong>Prediabetes</strong> on the verge of
+                Diabetes. Took the OGGT Glucose Load Test and have 199 after one
+                hour and 167 after two hours.
               </p>
             </div>
 
             <div>
               <p className="text-blue-600 font-bold text-lg lg:text-base">
-                June 2025 — Allergy Desensitization
+                June 2025
               </p>
               <p className="text-zinc-700">
-                Will begin <strong>birch pollen allergy desensitization</strong>{" "}
+                Have begun{" "}
+                <strong>
+                  birch pollen & house dust allergy desensitization
+                </strong>{" "}
                 (3-year plan).
               </p>
             </div>
 
             <div>
-              <p className="text-blue-600 font-bold text-lg lg:text-base">Now</p>
+              <p className="text-blue-600 font-bold text-lg lg:text-base">
+                Now
+              </p>
               <p className="text-zinc-600">
                 Continuing meds (L-thyroxine, Chlormadinone), supplements,
                 restricted diet. Prioritizing light activity and recovery.
@@ -137,7 +146,8 @@ export function Timeline() {
               long-term bleeding/migraine management.
             </li>
             <li>
-              Visit a <strong>nuclear medicine doctor</strong> to check my thyroid.
+              Visit a <strong>nuclear medicine doctor</strong> to check my
+              thyroid.
             </li>
             <li>
               Try to get an appointment with an <strong>endocrinologist</strong>{" "}

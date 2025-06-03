@@ -108,7 +108,7 @@ export function Overview({ patientInfo }) {
           </div>
         </Section>
 
-        <Section title="💊 Medication" colorIndex={3}>
+        <Section title="💊 Regular Medication" colorIndex={3}>
           {currentMedication.map((med, i) => (
             <div
               key={i}
