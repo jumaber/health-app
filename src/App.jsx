@@ -17,8 +17,8 @@ import { onAuthStateChanged } from "firebase/auth";  // Import onAuthStateChange
 
 function App() {
   const [symptoms, setSymptoms] = useState([]);
- const [patientInfo, setPatientInfo] = useState(patientInfoData);  
- const [isAuthenticated, setIsAuthenticated] = useState(false); // Auth state
+  const [patientInfo, setPatientInfo] = useState(patientInfoData);  
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Auth state
 
   useEffect(() => {
     fetchSymptoms();
@@ -40,13 +40,18 @@ function App() {
 
   // Fetch symptoms from the backend
   const fetchSymptoms = async () => {
-    const res = await fetch(
-      "https://julia-health-app.onrender.com/api/symptoms"
-    );
-    const data = await res.json();
-    console.log("📦 fetched symptoms:", data);
-    setSymptoms(data);
+    try {
+      const res = await fetch(
+        "https://julia-health-app.onrender.com/api/symptoms"
+      );
+      if (!res.ok) throw new Error("Fetch failed");
+      const data = await res.json();
+      setSymptoms(data);
+    } catch (err) {
+      console.error("Failed to fetch symptoms:", err);
+    }
   };
+  
 
   return (
     <>
