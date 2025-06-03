@@ -106,7 +106,9 @@ export function Timeline() {
                 Diagnosed with <strong>Endometriosis</strong>. <br />
                 Diagnosed with <strong>Prediabetes</strong> on the verge of
                 Diabetes. Took the OGGT Glucose Load Test and have 199 after one
-                hour and 167 after two hours.
+                hour and 167 after two hours.<br />
+                Thyroid double-checked - the values are ok.<br />
+                Quality of vision overall reduced. Left eye -0,50 and right eye -0,25-
               </p>
             </div>
 
@@ -144,14 +146,6 @@ export function Timeline() {
             <li>
               Evaluate the effectiveness of the <strong>Mirena IUD</strong> for
               long-term bleeding/migraine management.
-            </li>
-            <li>
-              Visit a <strong>nuclear medicine doctor</strong> to check my
-              thyroid.
-            </li>
-            <li>
-              Try to get an appointment with an <strong>endocrinologist</strong>{" "}
-              to support hormone balance and fatigue.
             </li>
             <li>
               Continue{" "}
