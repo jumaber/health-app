@@ -98,8 +98,8 @@
     {
       "name": "Aurobindo sumatriptan",
       "amount": "100mg",
-      "frequency": "-",
-      "intakeTime": "When aura starts",
+      "frequency": "",
+      "intakeTime": "if identified on time, when aura starts",
       "url": "https://www.shop-apotheke.com/arzneimittel/5454332/sumatriptan-aurobindo-50-mg.htm"
     }
   ],
@@ -111,6 +111,20 @@
       "frequency": "Daily",
       "intakeTime": "Morning",
       "link": "https://amzn.eu/d/8JVvbis"
+    },
+    {
+      "name": "Selen + Zink",
+      "amount": "2x pills, Zink 5m & Selen 24,5 ug",
+      "frequency": "Daily",
+      "intakeTime": "Morning",
+      "link": "https://amzn.eu/d/2zGyUKw"
+    },
+    {
+      "name": "Acetyl-L-Carnitin",
+      "amount": "1 pill, 500mg",
+      "frequency": "Daily, for short periods",
+      "intakeTime": "Morning",
+      "link": "https://amzn.eu/d/dDZEF23"
     },
     {
       "name": "Vitamin D3",
@@ -127,13 +141,6 @@
       "link": "https://amzn.eu/d/4tLB2Q0"
     },
     {
-      "name": "Thyroid Support",
-      "amount": "Kelp & Thyme Extracts",
-      "frequency": "Daily",
-      "intakeTime": "Afternoon",
-      "link": "https://amzn.eu/d/is2UZP2"
-    },
-    {
       "name": "Slippery Elm",
       "amount": "2 capsules",
       "frequency": "Daily",
@@ -141,18 +148,11 @@
       "link": "https://amzn.eu/d/cpoxU33"
     },
     {
-      "name": "Silizium",
-      "amount": "1 capsule",
+      "name": "Magnesium Glycinate",
+      "amount": "1 capsule of 1000mg",
       "frequency": "Daily",
       "intakeTime": "Evening",
-      "link": "https://amzn.eu/d/6qvs6Tj"
-    },
-    {
-      "name": "Magnesium Complex",
-      "amount": "1 capsule",
-      "frequency": "Daily",
-      "intakeTime": "Evening",
-      "link": "https://amzn.eu/d/1v2TQuJ"
+      "link": "https://amzn.eu/d/9yEyxg4"
     },
     {
       "name": "Theanine",
