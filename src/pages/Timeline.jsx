@@ -106,9 +106,12 @@ export function Timeline() {
                 Diagnosed with <strong>Endometriosis</strong>. <br />
                 Diagnosed with <strong>Prediabetes</strong> on the verge of
                 Diabetes. Took the OGGT Glucose Load Test and have 199 after one
-                hour and 167 after two hours.<br />
-                Thyroid double-checked - the values are ok.<br />
-                Quality of vision overall reduced. Left eye -0,50 and right eye -0,25-
+                hour and 167 after two hours.
+                <br />
+                Thyroid double-checked - the values are ok.
+                <br />
+                Quality of vision overall reduced. Left eye -0,50 and right eye
+                -0,25-
               </p>
             </div>
 
@@ -146,6 +149,14 @@ export function Timeline() {
             <li>
               Evaluate the effectiveness of the <strong>Mirena IUD</strong> for
               long-term bleeding/migraine management.
+            </li>
+            <li>
+              <strong>Tapper off from Chlormanidone</strong> slowly. Observe if
+              mood swings, hot flashes & strong periods return.
+            </li>
+            <li>
+              Monitor <strong>migraine</strong> patterns during and after
+              tapering off Chlormadinone.
             </li>
             <li>
               Continue{" "}
