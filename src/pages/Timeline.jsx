@@ -103,15 +103,18 @@ export function Timeline() {
               <p className="text-zinc-700">
                 <strong>Mirena IUD</strong> implantation was successful.
                 <br />
-                Diagnosed with <strong>Endometriosis</strong>. <br />
+                Diagnosed with <strong>Endometriosis</strong> and Ovarian Cysts.{" "}
+                <br />
                 Diagnosed with <strong>Prediabetes</strong> on the verge of
-                Diabetes. Took the OGGT Glucose Load Test and have 199 after one
-                hour and 167 after two hours.
+                Diabetes.<br/> 
+                OGGT Glucose Load Test Results: 199 after 1h / 167 after 2h.
                 <br />
-                Thyroid double-checked - the values are ok.
+                Thyroid double-checked, the values are ok.<br />
+                <strong>Small node </strong> to be controled regularly on the
+                right side of thyroid gland.
                 <br />
-                Quality of vision overall reduced. Left eye -0,50 and right eye
-                -0,25-
+                <strong>Quality of vision reduced</strong>. Left eye -0,50 /
+                right eye -0,25.
               </p>
             </div>
 
@@ -151,12 +154,17 @@ export function Timeline() {
               long-term bleeding/migraine management.
             </li>
             <li>
-              <strong>Tapper off from Chlormanidone</strong> slowly. Observe if
+              Tapper off from <strong>Chlormanidone</strong> slowly. Observe if
               mood swings, hot flashes & strong periods return.
             </li>
             <li>
               Monitor <strong>migraine</strong> patterns during and after
               tapering off Chlormadinone.
+            </li>
+            <li>
+              Try to reverse Insulin Resistance by taking supplements like{" "}
+              <strong>Berberine</strong>, <strong>Myo-Inotisol</strong>,{" "}
+              <strong>B-6</strong>(P-5-P) & <strong>Magnesium Glycinate</strong>
             </li>
             <li>
               Continue{" "}
