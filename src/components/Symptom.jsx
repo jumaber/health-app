@@ -56,6 +56,10 @@ export default function Symptom({ symptoms, fetchSymptoms, setSymptoms }) {
   };
 
   const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this entry?"
+    );
+    if (!confirmDelete) return;
     console.log("Deleting symptom with ID:", id);
 
     try {
